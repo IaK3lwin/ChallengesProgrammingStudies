@@ -7,6 +7,9 @@ não são de minha autoria. Deixarei créditos aos conteúdos que foram utilizad
 
 # Estudos
 
-## 3 Perguntas sobre JavaScript
- - Essa parte do repositorio foi baseado no <a href="https://www.youtube.com/watch?v=QVrrqgDhhu4" target="_blank" rel="nofollow">vídeo</a> do  Filipe Deschamps
+## (3 Perguntas sobre JavaScript)["./3-perguntas-javascript"]
+    Essa parte do repositorio foi baseado no 
+<a href="https://www.youtube.com/watch?v=QVrrqgDhhu4"target="_blank" rel="nofollow">vídeo</a> do  Filipe Deschamps intitulado de "Eu quero saber se você consegue responder essas 3 perguntas de JavaScript!"
+nele busco responder e comentar o que foi dito no vídeo. E colocando os códigos e explicações 
+apresentadas pelo felipe. 
 
