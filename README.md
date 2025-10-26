@@ -1,5 +1,5 @@
-# Desafios-Javascript
-Perguntas e desafios sobre javascripts (algumas podem cair em entrevistas)
+# Challenges, studies on programming
+Perguntas e desafios sobre programação (algumas podem cair em entrevistas)
 
 ## Aviso (importânte)
 Esse repositório é apenas um estudo "documentado", boa parte dos conceitos, explicações etc 
