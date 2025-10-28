@@ -7,7 +7,7 @@ O jogo será composto por um **cliente** e um **servidor** que
 é bem comum, é importatante notar que para um mesmo servidor você
 pode e deve conectar a vários clientes.
 
-![Imagem](../src/imagemServeClient.png)
+![Imagem]('![alt text](https://res.cloudinary.com/dyvfesbzn/image/upload/v1761653241/Drawing_2_3_betpbq.png)')
 
 ## Responsabilidades do jogo
 
