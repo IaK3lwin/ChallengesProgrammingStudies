@@ -30,8 +30,7 @@ Ok to proceed? (y) y
 
 
   Logo após ele pede pra que esqueçamos do navegador e do canvas, e visualizasse uma tela com
-500px de altura e largura com um quadrado de 200px com fundo vermelho. visualizar a camada de presentação! Apenas com os dados que o Filipe descreveu. Bom vários cerebros com as mesmas informações que o Filipe descreveu pensaram e visualizaram de formas diferentes, e segundo ele 
-próprio isso não é bom.
+500px de altura e largura com um quadrado de 200px com fundo vermelho. visualizar a camada de presentação! Apenas com os dados que o Filipe apresentou. Bom vários cerebros com as mesmas informações que o Filipe passsou e visualizaram de formas diferentes, e segundo ele próprio isso não é bom.
 
   Ele então começa a programar o que tinha dito, então eu pausei o vídeo e fui tentar 
 representar a camada de apresentação com as informações que o Filipe descreveu, Não sabia
