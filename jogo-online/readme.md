@@ -38,4 +38,6 @@ permitindo que o jogo seja atualizado a todo momento.
 
 ## <a href="./docs/umDosConceitosMaisImportantesSobreProgramacao.md">Um dos conceitos mais importantes na programação!</a>
 
-  Nessa vídeo ele explica um dos paradigmas importantes para a programação o **Separation of concerns**
+  Nessa vídeo ele explica um dos paradigmas importantes para a programação o **Separation of
+concerns**
+
