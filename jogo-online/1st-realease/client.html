@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu promeiro jogo multisquere</title>
+    <link rel="stylesheet" href="./src/style/main.css">
+</head>
+<body>
+    <canvas id="screen" width="500" height="500">
+
+    </canvas>
+
+    <script>
+        const canvas = document.querySelector("#screen")
+        console.log(canvas.getContext('2d'))
+        const contextDraw = canvas.getContext('2d')
+        contextDraw.fillStyle = "red"
+        contextDraw.fillRect(0, 0, 200, 200)
+        contextDraw.fill()
+    </script>
+</body>
+</html>
