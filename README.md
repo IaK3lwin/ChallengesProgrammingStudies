@@ -14,7 +14,7 @@ não são de minha autoria. Deixarei créditos aos conteúdos que foram utilizad
     apresentadas pelo felipe. 
 </p>
 
-## <a href="./jogo-online/readme.md">Jogo multisquere</a>
+## <a href="./jogo-online/readme.md">Jogo multiplayer</a>
 
   Novamente essa parte do repositório foi baseado no conteúdo do 
 Filipe Deschamps, mas dessa vez não é apenas um vídeo e sim uma playlist nomeada de <a href="https://www.youtube.com/playlist?list=PLMdYygf53DP5SVQQrkKCVWDS0TwYLVitL" target="_blank">Primeiro jogo Multisquere</a> todos créditos vai para o Filipe Deschamps
