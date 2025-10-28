@@ -127,4 +127,33 @@ function renderGame() {
 
 ![alt text](image-4.png)
 
-Ignora o tamnho dela kkkkkkkk
+Ignora o tamnho dela kkkkkkkk. Então o Filipe propoe modificar os valores
+da variável game pelo terminal, e ao modificar a coordenada x da fruta, ela
+continuou parado. Esse comportamento era esperado pois só chamamos o metodo
+de renderGame uma única vez. É aí que ele presenta o método `requestAnimationFrame()`.
+Que trás diversas otimizações e foi feita para esses tipo de problema. Vamos usar
+a recursão para que a própria renderGame chame ela mesma, mas usando o requestAnimationFrame.
+
+```
+renderGame()
+function renderGame() {
+    for (let playerId in game.players) {
+            let currentPlayer = game.players[playerId]
+        contextGame.fillStyle = "black"
+        contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (let fruitId in game.fruits) {
+        let currentFruit = game.fruits[fruitId]
+        contextGame.fillStyle = "green"
+        contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+
+    requestAnimationFrame(renderGame) // chama o método, fazendo com que atualize a tela a todo frame
+}
+```
+
+![alt text](image-5.png)
+
+ Então, nem tudo são flores, em nenhum momento estamos dizendo para apagar o "frame" anterior
+ cusando esse efeito.

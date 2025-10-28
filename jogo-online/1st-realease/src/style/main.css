@@ -7,5 +7,10 @@
 }
 
 canvas {
-    border: 1px solid gray;
+    border: 5px solid gray;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    width: 400px;
+    height: 400px;
 }

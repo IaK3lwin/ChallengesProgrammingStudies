@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="./src/style/main.css">
 </head>
 <body>
-    <canvas id="screen" width="500" height="500">
+    <canvas id="screen" width="10" height="10">
 
     </canvas>
 
     <script>
         const canvas = document.querySelector("#screen")
-        canvas.width = "10"
-        canvas.height = "10"
+   
         const contextGame = canvas.getContext('2d')
         const game = {
             players : {
@@ -37,6 +36,11 @@
 
         renderGame()
         function renderGame() {
+
+            //clear screen
+            contextGame.fillStyle = 'white'
+            contextGame.fillRect(0,0, 10, 10)
+
             for (let playerId in game.players) {
                  let currentPlayer = game.players[playerId]
                 contextGame.fillStyle = "black"
@@ -48,6 +52,8 @@
                 contextGame.fillStyle = "green"
                 contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
             }
+
+            requestAnimationFrame(renderGame) // chama o método, fazendo com que atualize a tela a todo frame
         }
     </script>
 </body>
