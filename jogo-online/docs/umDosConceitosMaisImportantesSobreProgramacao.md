@@ -40,3 +40,91 @@ usar o canvas e seus métodos então consultando a documentação cheguei a esse
 
 ![alt text](image-2.png)
 
+CARALHOOOO!! né que visualizei certo :D
+
+## Próximo desafio!
+
+  Os dados do quadrado estão jogados pelo código, e isso não é interessante. Logo Filipe
+nos desafia a pensar em uma estrutura de dados que componha esse canvas:
+
+![canvas a ser estruturado](image-3.png)
+
+  Analisando a imagem, só consigo imaginar um objeto para a tela
+que contem os jogadores com sua posição, cor etc... Algo como isso:
+
+```
+Screen:
+    X : 10
+    Y : 10
+    player1:
+        color : 'red'
+        X : 1
+        Y : 1
+    player2:
+        color : 'red'
+        X : 10
+        Y : 10
+    fruits:
+        [
+            color : 'red'
+            X : 3
+            Y : 1
+        ]
+
+```
+
+  Mas sendo bem sincerro, não acho que seja a solução certa. Até porque 
+o paradigma que veremos nesse vídeo se chama "SEPARATION OF CONCERNS"
+então acho pouco provável.
+
+### Solução do Filipe
+  A solução dele foi parecida, mas não igual. Talvez no subonciente por conta de já
+ter me esbarrado com a solução dele meu cerebro fez algo parecido, não sei. Um fato 
+interessante é que minha memória é horrível então não sei se foi exatamente isso.
+
+```
+const game = {
+    players : {
+        player1 : {x:1, y : 1},
+        player2 : {x : 9, y : 9}
+    },
+    fruits : {
+        'fruta1' : {
+            x : 3,
+            y : 1
+        }
+    }
+}
+
+```
+
+  E como ele pode pegar o elemento do player por id via Javascript é possível mudar
+a cor do player do navegador e dos outros player. Deixando a responsabilidade de
+pintar os objetos a camada de apresentação.
+
+### Desenhando o canvas apartir da estrutura de dados
+
+  Então se para desenhar um quadrado no canvas bastas preencher o quadrado e
+desenhar um quadrado com a posição e o tamnho só precisamos extrair as informações 
+da estrutura de dados e passar seus valores para o canvas:
+
+```
+function renderGame() {
+    for (let playerId in game.players) {
+            let currentPlayer = game.players[playerId]
+        contextGame.fillStyle = "black"
+        contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (let fruitId in game.fruits) {
+        let currentFruit = game.fruits[fruitId]
+        contextGame.fillStyle = "green"
+        contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+}
+```
+  E temos um canvas desenhado na tela! ao chamdar o metodo renderGame():
+
+![alt text](image-4.png)
+
+Ignora o tamnho dela kkkkkkkk

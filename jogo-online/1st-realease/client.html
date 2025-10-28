@@ -13,11 +13,42 @@
 
     <script>
         const canvas = document.querySelector("#screen")
-        console.log(canvas.getContext('2d'))
-        const contextDraw = canvas.getContext('2d')
-        contextDraw.fillStyle = "red"
-        contextDraw.fillRect(0, 0, 200, 200)
-        contextDraw.fill()
+        canvas.width = "10"
+        canvas.height = "10"
+        const contextGame = canvas.getContext('2d')
+        const game = {
+            players : {
+                'player1' : {
+                    x : 1,
+                    y : 1
+                },
+                'player2' : {
+                    x : 9,
+                    y : 9
+                }
+            },
+            fruits : {
+                'fruit1' :  {
+                    x : 4,
+                    y : 1
+                }
+            }
+        }
+
+        renderGame()
+        function renderGame() {
+            for (let playerId in game.players) {
+                 let currentPlayer = game.players[playerId]
+                contextGame.fillStyle = "black"
+                contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+            }
+
+            for (let fruitId in game.fruits) {
+                let currentFruit = game.fruits[fruitId]
+                contextGame.fillStyle = "green"
+                contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
+            }
+        }
     </script>
 </body>
 </html>
