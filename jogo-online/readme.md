@@ -7,4 +7,4 @@ O jogo será composto por um **cliente** e um **servidor** que
 é bem comum, é importatante notar que para um mesmo servidor você
 pode e deve conectar a vários clientes.
 
-![Imagem](../src/Drawing.png)
+![Imagem](../src/imagem1.png)
