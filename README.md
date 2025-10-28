@@ -13,3 +13,13 @@ não são de minha autoria. Deixarei créditos aos conteúdos que foram utilizad
     nele busco responder e comentar o que foi dito no vídeo. E colocando os códigos e explicações 
     apresentadas pelo felipe. 
 </p>
+
+## <a href="./jogo-online/readme.md">Jogo multiplayer</a>
+
+  Novamente essa parte do repositório foi baseado no conteúdo do 
+Filipe Deschamps, mas dessa vez não é apenas um vídeo e sim uma playlist nomeada de <a href="https://www.youtube.com/playlist?list=PLMdYygf53DP5SVQQrkKCVWDS0TwYLVitL" target="_blank">Primeiro jogo Multiplayer</a> todos créditos vai para o Filipe Deschamps
+
+## Introdução
+  Filipe gravou uma series de vídeos mostrando a criação de seu
+primeiro jogo multiplayer, mostrando a primeira versão com código "ruim" e logo após uma serie de tutoriais melhorando o código e explicando sobre infraestrutura de software e boas práticas. Esse repositório tem intuito de documentar meus estudos
+e nada mais.
