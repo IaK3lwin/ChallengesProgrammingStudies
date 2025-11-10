@@ -156,4 +156,31 @@ function renderGame() {
 ![alt text](image-5.png)
 
  Então, nem tudo são flores, em nenhum momento estamos dizendo para apagar o "frame" anterior
- cusando esse efeito.
+ cusando esse efeito. Mas no desenvolvimento de games e esses tipos de ferramenta gráfica low level
+ então para resolver isso, basta antes de renderizar o novo "frame", pinta a tela inteira de branco.
+
+ ```
+
+renderGame()
+function renderGame() {
+
+    //clear screen
+    contextGame.fillStyle = 'white'
+    contextGame.fillRect(0,0, 10, 10)
+
+    for (let playerId in game.players) {
+            let currentPlayer = game.players[playerId]
+        contextGame.fillStyle = "black"
+        contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (let fruitId in game.fruits) {
+        let currentFruit = game.fruits[fruitId]
+        contextGame.fillStyle = "green"
+        contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+
+    requestAnimationFrame(renderGame) // chama o método, fazendo com que atualize a tela a todo frame
+}
+
+ ```
