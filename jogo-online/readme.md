@@ -41,3 +41,4 @@ permitindo que o jogo seja atualizado a todo momento.
   Nessa vídeo ele explica um dos paradigmas importantes para a programação o **Separation of
 concerns**
 
+## <a href="./docs/testeDoCodigoRuim.md">Teste do código mal feito (Quero ver você passar!)</a>

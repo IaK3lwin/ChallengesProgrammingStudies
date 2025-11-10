@@ -38,16 +38,16 @@
         function renderGame() {
 
             //clear screen
-            contextGame.fillStyle = 'white'
-            contextGame.fillRect(0,0, 10, 10)
+            contextGame.clearnRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
 
-            for (let playerId in game.players) {
+
+            for (const playerId in game.players) {
                  let currentPlayer = game.players[playerId]
                 contextGame.fillStyle = "black"
                 contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
             }
 
-            for (let fruitId in game.fruits) {
+            for (const fruitId in game.fruits) {
                 let currentFruit = game.fruits[fruitId]
                 contextGame.fillStyle = "green"
                 contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
