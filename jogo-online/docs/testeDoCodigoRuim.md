@@ -1,6 +1,6 @@
 # Teste do código ruim (quero ver você passar!)
 
-Nesse vídeo o Filipe diz querer fazer nós pensarmos como programador!
+Nesse vídeo o Filipe almeja fazer com que a gente comece a pensar como programadores!
 E que o conteúdo apresentado agora é mais importante que o jogo em si.
 Melhorias sugeridas pela própria comunidade:
 
