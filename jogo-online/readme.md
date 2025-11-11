@@ -42,3 +42,10 @@ permitindo que o jogo seja atualizado a todo momento.
 concerns**
 
 ## <a href="./docs/testeDoCodigoRuim.md">Teste do código mal feito (Quero ver você passar!)</a>
+Nessa parte iremos começa o desenvolvimento da camada de input de forma bem... inadequada,
+para conseguir enchergar os problemas e ir resolvendo eles! E também criaremos a primeira 
+regra de negócio do jogo. 
+
+referência: [video do filipe](https://youtu.be/RJvktZnZn6A)
+
+## <a href="./docs/video4.md">Você nunca mais vai conseguir ler um código da mesma forma...</a>
