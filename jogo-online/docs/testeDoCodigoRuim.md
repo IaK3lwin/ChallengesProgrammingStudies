@@ -118,7 +118,7 @@ serão o que iram nos distinguir das IAs, nós como desenvolve-
 dores não podemos nos permitir cometer esse tipo de erro! (que
 já cometi algumas vezes!), mas estou estudando para evoluir!!
 
-"Dentro da camada responsável por capturar o input do usuário tem
+> "Dentro da camada responsável por capturar o input do usuário tem
 uma regra de negócio do JOGO! Misturado ali dentro, turma! Isso não
 dói no ouvido de vocês? Se a gente deixar a implementação ir por essa direção, 
 daqui a pouco a gente  está colocando detalhes da camada de apresentação,
