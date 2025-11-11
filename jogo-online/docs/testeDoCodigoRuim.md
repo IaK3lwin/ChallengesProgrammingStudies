@@ -65,7 +65,7 @@ function handleKeydown(event) {
 
 ```
 
-Para cada tecla precionada ele faz um if cericando a tecla, 
+Para cada tecla precionada ele faz um if verificando a tecla, 
 Fazendo com que o código não escale.
 
 ## Primeira regra de negócio!
@@ -116,17 +116,21 @@ para qualquer um ver e tentar alterar!
 Bom, queremos ser melhores do que isso! Afinal esses detalhes
 serão o que iram nos distinguir das IAs, nós como desenvolve-
 dores não podemos nos permitir cometer esse tipo de erro! (que
-já cometi algumas vezes!), mas estou estudando justamente
-para isso!
+já cometi algumas vezes!), mas estou estudando para evoluir!!
 
 "Dentro da camada responsável por capturar o input do usuário tem
 uma regra de negócio do JOGO! Misturado ali dentro, turma! Isso não
 dói no ouvido de vocês? Se a gente deixar a implementação ir por essa direção, 
 daqui a pouco a gente  está colocando detalhes da camada de apresentação,
 dentro da camada de input... Se no meio dessa massaroca aparecer um BUG
-em como um pixel está dendo renderizado na camada de apresentação, as vezez
+em como um pixel está sendo renderizado na camada de apresentação, as vezez
 isso pode está conectado de uma forma mega torta com a camada de network
-e turma issso não tem nada haver!" - Filipe Deschamps
+e turma isso não tem nada haver!" - Filipe Deschamps
 
 Causando dificuldades para implementar testes unitáiros e resolução
-de BUGS futuros. Deixando a manutenção um INFERNO! 
+de BUGS futuros. Deixando a manutenção um INFERNO! Para solucionar
+esse problema iremos aprender um novo design pattern!
+
+na próxima parte:
+
+ <a>Anterior</a>  | <a>Próximo</a>
