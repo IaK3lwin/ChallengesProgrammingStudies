@@ -14,8 +14,8 @@
     <script>
         const canvas = document.querySelector("#screen")
    
-        const contextGame = canvas.getContext('2d')
-        const game = {
+        const contextstate = canvas.getContext('2d')
+        const state = {
             players : {
                 'player1' : {
                     x : 1,
@@ -38,7 +38,7 @@
 
         document.addEventListener('keydown', handleKeydown)
         function handleKeydown(event) {
-            const player = game.players[currentPlayerId]
+            const player = state.players[currentPlayerId]
             
 
             if (event.key == 'ArrowUp' && player.y - 1 >= 0) {
@@ -62,26 +62,40 @@
                 player.x -= 1
             }
         }
-        renderGame()
-        function renderGame() {
+
+        function createGame() {
+            
+            function movePlayer(command) {
+                console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+            }
+
+            return {
+                movePlayer
+            }
+        }
+
+        const game = createGame()
+
+        renderstate()
+        function renderstate() {
 
             //clear screen
-            contextGame.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
+            contextstate.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
 
 
-            for (const playerId in game.players) {
-                 let currentPlayer = game.players[playerId]
-                contextGame.fillStyle = "black"
-                contextGame.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+            for (const playerId in state.players) {
+                 let currentPlayer = state.players[playerId]
+                contextstate.fillStyle = "black"
+                contextstate.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
             }
 
-            for (const fruitId in game.fruits) {
-                let currentFruit = game.fruits[fruitId]
-                contextGame.fillStyle = "green"
-                contextGame.fillRect(currentFruit.x, currentFruit.y, 1,1)
+            for (const fruitId in state.fruits) {
+                let currentFruit = state.fruits[fruitId]
+                contextstate.fillStyle = "green"
+                contextstate.fillRect(currentFruit.x, currentFruit.y, 1,1)
             }
 
-            requestAnimationFrame(renderGame) // chama o método, fazendo com que atualize a tela a todo frame
+            requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
         }
     </script>
 </body>
