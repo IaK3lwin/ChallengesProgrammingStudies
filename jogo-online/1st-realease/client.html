@@ -14,7 +14,7 @@
     <script>
         const canvas = document.querySelector("#screen")
    
-        const contextstate = canvas.getContext('2d')
+        const contextScreen = canvas.getContext('2d')
         const state = {
             players : {
                 'player1' : {
@@ -37,36 +37,40 @@
         const currentPlayerId = 'player1'
 
         document.addEventListener('keydown', handleKeydown)
+
         function handleKeydown(event) {
             const player = state.players[currentPlayerId]
             
-
-            if (event.key == 'ArrowUp' && player.y - 1 >= 0) {
-                player.y -= 1
-                console.log("tecla ativa: ", event.key)
-            }
-            console.log(canvas.width)
-            console.log(player.y)
-            if (event.key == 'ArrowDown' && player.y + 2 <= canvas.height) {
-                player.y += 1
-                console.log("tecla ativa: ", event.key)
+            const command = {
+                playerId : 'player1',
+                keyPressed :  event.key
             }
 
-            if (event.key == 'ArrowRight' && player.x + 2 <= canvas.width) {
-                console.log("tecla ativa: ", event.key)
-                player.x += 1
-            }
-
-            if (event.key == 'ArrowLeft' && player.x - 1 >= 0)  {
-                console.log("tecla ativa: ", event.key)
-                player.x -= 1
-            }
+            game.movePlayer(command)
         }
 
         function createGame() {
             
             function movePlayer(command) {
                 console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+                const player = state.players[command.playerId]
+                console.log("tamanho da altura do canvas", canvas.height)
+                console.log(player)
+                if (command.keyPressed == "ArrowUp" && player.y > 0) {
+                    player.y -= 1
+                }
+
+                if (command.keyPressed == 'ArrowDown' && player.y + 1 < canvas.height) {
+                    player.y += 1
+                }
+                
+                if (command.keyPressed == 'ArrowLeft' && player.x - 1 >= 0) {
+                    player.x -= 1
+                }
+
+                if (command.keyPressed == 'ArrowRight' && player.x + 1 < canvas.width) {
+                    player.x += 1
+                }
             }
 
             return {
@@ -80,19 +84,19 @@
         function renderstate() {
 
             //clear screen
-            contextstate.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
+            contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
 
 
             for (const playerId in state.players) {
                  let currentPlayer = state.players[playerId]
-                contextstate.fillStyle = "black"
-                contextstate.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+                contextScreen.fillStyle = "black"
+                contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
             }
 
             for (const fruitId in state.fruits) {
                 let currentFruit = state.fruits[fruitId]
-                contextstate.fillStyle = "green"
-                contextstate.fillRect(currentFruit.x, currentFruit.y, 1,1)
+                contextScreen.fillStyle = "green"
+                contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
             }
 
             requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame

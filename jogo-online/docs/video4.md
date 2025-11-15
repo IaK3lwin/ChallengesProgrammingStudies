@@ -153,3 +153,136 @@ O que fizemos? criamos a factory da camada de jogo,
 onde conterá os códigos de regras de jogo que retorna um
 objeto que será as regras do game. 
 
+agora vamos refazer a implementação de movimentação do player, 
+que ainda não está boa e necessita de melhoria.
+
+Lembrando que quanto menos resistência você tiver para deletar 
+código melhor irá evoluir! 
+```JavaScript
+    //vamos excluir toda lógica do handleKey e colocar no por enquanto na factory do game
+    function createGame() {
+    
+        function movePlayer(command) {
+            console.log(`moving player ${command.playerId} with ${command.keyPressed} `)
+
+            const player = state.players[command.playerId]
+
+            if (command.keyPressed == 'ArrowUp' && command.player.y >= 0) {
+                command.player.y--
+            }
+
+            if (command.keyPressed == 'ArrowDown' && command.player.y + 1 <= canvas.height) {
+                player.y++
+            }
+
+            if (command.keyPressed == 'ArrowLeft' && command.player.x - 1 >= canvas.width) {
+                player.x--
+            }
+
+            if (command.keyPressed == 'ArrowRight' && command.player.x < canvas.width) {
+                player.x++
+            } 
+        }
+        
+        return {
+            movePlayer
+        }
+    }
+```
+
+agora fizemos o encapsulamento ou isolamento da camada
+de jogos, a regra de negócio de movimentação ainda não
+está boa, mas logo iremos melhorá-lo.
+
+#### Código final do 2° estágio de acoplamento 
+```JavaScript
+const canvas = document.querySelector("#screen")
+
+const contextScreen = canvas.getContext('2d')
+const state = {
+    players : {
+        'player1' : {
+            x : 1,
+            y : 1
+        },
+        'player2' : {
+            x : 9,
+            y : 9
+        }
+    },
+    fruits : {
+        'fruit1' :  {
+            x : 4,
+            y : 1
+        }
+    }
+}
+
+const currentPlayerId = 'player1'
+
+document.addEventListener('keydown', handleKeydown)
+
+function handleKeydown(event) {
+    const player = state.players[currentPlayerId]
+    
+    const command = {
+        playerId : 'player1',
+        keyPressed :  event.key
+    }
+
+    game.movePlayer(command)
+}
+
+function createGame() {
+    
+    function movePlayer(command) {
+        console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+        const player = state.players[command.playerId]
+        console.log("tamanho da altura do canvas", canvas.height)
+        console.log(player)
+        if (command.keyPressed == "ArrowUp" && player.y > 0) {
+            player.y -= 1
+        }
+
+        if (command.keyPressed == 'ArrowDown' && player.y + 1 < canvas.height) {
+            player.y += 1
+        }
+        
+        if (command.keyPressed == 'ArrowLeft' && player.x - 1 >= 0) {
+            player.x -= 1
+        }
+
+        if (command.keyPressed == 'ArrowRight' && player.x + 1 < canvas.width) {
+            player.x += 1
+        }
+    }
+
+    return {
+        movePlayer
+    }
+}
+
+const game = createGame()
+
+renderstate()
+function renderstate() {
+
+    //clear screen
+    contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
+
+
+    for (const playerId in state.players) {
+            let currentPlayer = state.players[playerId]
+        contextScreen.fillStyle = "black"
+        contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (const fruitId in state.fruits) {
+        let currentFruit = state.fruits[fruitId]
+        contextScreen.fillStyle = "green"
+        contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+
+    requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
+}
+```
