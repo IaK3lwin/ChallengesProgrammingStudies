@@ -295,8 +295,58 @@ function renderstate() {
 Agora a coisa fica muito interessante e maluca! vamos utilizar
 o **design pettern** chamado **obsover** e como ele funciona?
 Inicialmente terá um objeto chamado de **Subject**, veja ele
-como objeto principal e irá observar, mas obserbar o que?
-Então entra os **Observer** que são objetos observáveis 
-pelo **subject**.
+como objeto principal que será observado, mas observado por quêm??
+Então entra os **Observer** que são objetos que iram observar o 
+**subject**.
 
 ![alt text](image-7.png)
+
+O que significa que qualquer mudança em seu estado,
+ou comportamento ele irá mandar uma notificação para
+todos **observer**, se a notificação for relevante para
+o **observer** ele fará o que bem entender com essa
+informação.
+
+#### Subject é poucas ideias
+Uma característa importante sobre o **subject** para
+ele não importa se algum observer está observando ele
+ou se a notificação é relevante para os observers, ele
+irá notificar todo mundo! O observer terá a responsabilidade
+de avaliar se aquela notificação é relevante para ele
+ou não. 
+
+![alt text](image-6.png)
+
+Mas depois de toda essa explicação, pode surgir uma dúvida,
+para quem eu devo oferecer o poder de subject, de notificar 
+os **observer** e a quem devo confiar o poder de **observer**??
+
+Bom, não existe regra! tecnicamente é ilimitado as opções, é 
+questão de implementar os métodos certos para os objetos.
+
+Nesse exemplo, o Filipe irá transformar o handleKeydown em um
+subject! para notificar as teclas pressionadas, partiu refatoraçãoo!!
+
+#### Inicialmente é necessário transformar o handleKeydown em uma factory
+
+```JavaScript
+
+function createKeyboardListenner() {
+
+    document.addEventListenner('keydown', handleKey)
+
+    function handleKeydown(event) {
+        const command = {
+            playerId : 'player1',
+            keyPressed : event.key
+        }
+
+        game.moveplayer(command)
+    }
+}
+
+```
+
+Agora o handlekey se tornou um factory, agora basta transformar
+ela em um subject, e isso é tranquilo!!
+
