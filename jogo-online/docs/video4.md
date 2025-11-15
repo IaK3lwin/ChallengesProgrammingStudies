@@ -299,4 +299,4 @@ como objeto principal e irá observar, mas obserbar o que?
 Então entra os **Observer** que são objetos observáveis 
 pelo **subject**.
 
-![alt text](image-6.png)
+![alt text](image-7.png)
