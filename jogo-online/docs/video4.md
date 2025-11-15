@@ -11,7 +11,7 @@ manuescrito para facilitar o aprendizado de minha humilde pessoa.
 
 ## Aprendizados contido nessa parte:
 - Arquitetura de software;
-- principalmente Acoplamento
+- principalmente desacoplamento
 
 No última capitulo terminamos com uma albúrdia de código! 
 com responsábilidades espalhadas com má pratica de desenvolvimento.
@@ -32,7 +32,7 @@ a mostrar as divisorias do seu sistema, os limites de seus componentes e se um e
 acoplado ao outro ou quando o componente está acoplado ao outro."
 
 
-## Estágios de acoplamento
+## Estágios de desacoplamento
 
 - 1° estágio: Quanto se tem vários códigos misturados tudo ao mesmo tempo
 - 2° estáfio: Apesar dos componentes estarem isolados, um código conhece o outro.
@@ -124,7 +124,7 @@ para descobrir o que falta assim como entender melhor o que você está
 desenvolvendo. 
 
 
-### 2° estágio de acoplamento
+### 2° estágio de desacoplamento
 
   Componentes Separados, mas que ainda se conhecem! Vamos
 separa-los mas ainda chamando um dentro do outro causando
@@ -194,29 +194,12 @@ agora fizemos o encapsulamento ou isolamento da camada
 de jogos, a regra de negócio de movimentação ainda não
 está boa, mas logo iremos melhorá-lo.
 
-#### Código final do 2° estágio de acoplamento 
+#### Código final do 2° estágio de desacoplamento 
 ```JavaScript
 const canvas = document.querySelector("#screen")
 
 const contextScreen = canvas.getContext('2d')
-const state = {
-    players : {
-        'player1' : {
-            x : 1,
-            y : 1
-        },
-        'player2' : {
-            x : 9,
-            y : 9
-        }
-    },
-    fruits : {
-        'fruit1' :  {
-            x : 4,
-            y : 1
-        }
-    }
-}
+
 
 const currentPlayerId = 'player1'
 
@@ -234,6 +217,25 @@ function handleKeydown(event) {
 }
 
 function createGame() {
+
+    const state = {
+    players : {
+            'player1' : {
+                x : 1,
+                y : 1
+            },
+            'player2' : {
+                x : 9,
+                y : 9
+            }
+        },
+        fruits : {
+            'fruit1' :  {
+                x : 4,
+                y : 1
+            }
+        }
+    }
     
     function movePlayer(command) {
         console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
@@ -259,6 +261,7 @@ function createGame() {
 
     return {
         movePlayer
+        state
     }
 }
 
@@ -271,14 +274,14 @@ function renderstate() {
     contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
 
 
-    for (const playerId in state.players) {
-            let currentPlayer = state.players[playerId]
+    for (const playerId in game.state.players) {
+            let currentPlayer = game.state.players[playerId]
         contextScreen.fillStyle = "black"
         contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
     }
 
-    for (const fruitId in state.fruits) {
-        let currentFruit = state.fruits[fruitId]
+    for (const fruitId in game.state.fruits) {
+        let currentFruit = game.state.fruits[fruitId]
         contextScreen.fillStyle = "green"
         contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
     }
@@ -286,3 +289,14 @@ function renderstate() {
     requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
 }
 ```
+
+### 3° estágio de desacoplamento
+
+Agora a coisa fica muito interessante e maluca! vamos utilizar
+o **design pettern** chamado **obsover** e como ele funciona?
+Inicialmente terá um objeto chamado de **Subject**, veja ele
+como objeto principal e irá observar, mas obserbar o que?
+Então entra os **Observer** que são objetos observáveis 
+pelo **subject**.
+
+![alt text](image-6.png)
