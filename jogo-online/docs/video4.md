@@ -18,14 +18,14 @@ com responsábilidades espalhadas com má pratica de desenvolvimento.
 Mas como identificamos se aquela parte do código está no lugar correto?
 Filipe trás uma pergunta milagrosa:
 
-"Mas de início é dificil perceber issso, é ainda mais difícil conseguir
+>"Mas de início é dificil perceber issso, é ainda mais difícil conseguir
 entender que está acoplado ou não então para treinar seu cérebro a cobrar
 isso do seu código  nada melhor do que sempre se fazer um questionamento,
 se fazer uma pergunta a cada linha de código e essa pergunta é bem simples
 ...." 
 
-## De quem é esse código???
-"E se você continuamente fizer essa pergunta você vai começar a presta atenção
+> ## De quem é esse código???
+> "E se você continuamente fizer essa pergunta você vai começar a presta atenção
 na resposta e ai a sua cabeça vai entrar em uma recursão maluca, porque dai você
 vai começar a se perguntar se essa resposta está certa, é isso que vai começar
 a mostrar as divisorias do seu sistema, os limites de seus componentes e se um está
