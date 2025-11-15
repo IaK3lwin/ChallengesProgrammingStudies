@@ -351,5 +351,35 @@ Agora o handlekey se tornou um factory, agora basta transformar
 ela em um subject, e isso é tranquilo!! Pois para transformá-lo 
 em um subject basta colocar as funções de subject nesse factory:
 
+```JavaScript
+function createKeyboardListenner() {
+    
+    const state = {
+        observers : [] // lista de observer que iram observar esse subject
+    }
 
+    function subscribe(observerFunc) {
+        state.observers.push(observerFunc)
+    }
 
+    function notifyAll(command) {
+        console.log(`Notify ${state.observers.lenght} observers`)
+        for (const observerFunc of state.observers) {
+            observerFunc(command)
+        }
+    }
+
+    document.addEventListenner('keydown', handlekey)
+
+    function handleKey(event) {
+        const command = {
+            playerId : 'player1',
+            keyPressed : event.key
+        }
+
+        notifyAll() // manda a notificação para todos observers que estiverem registrado
+    }
+    
+    
+}
+```
