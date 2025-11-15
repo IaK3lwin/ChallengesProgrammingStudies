@@ -15,41 +15,71 @@
         const canvas = document.querySelector("#screen")
    
         const contextScreen = canvas.getContext('2d')
-        const state = {
-            players : {
-                'player1' : {
-                    x : 1,
-                    y : 1
-                },
-                'player2' : {
-                    x : 9,
-                    y : 9
-                }
-            },
-            fruits : {
-                'fruit1' :  {
-                    x : 4,
-                    y : 1
-                }
-            }
-        }
+        
 
-        const currentPlayerId = 'player1'
+        
+        function createKeydownListenner() {
 
-        document.addEventListener('keydown', handleKeydown)
-
-        function handleKeydown(event) {
-            
-            const command = {
-                playerId : 'player1',
-                keyPressed :  event.key
+            const state = {
+                observers : []
             }
 
-            game.movePlayer(command)
+            function subscribe(observerFunc) {
+                /*
+                    essa função faz a inscrição para o subject keyboardListenner
+                */
+                state.observers.push(observerFunc)
+            }
+
+            /*
+            * @description essa função faz a inscrição para o subject keyboardListenner
+            */
+            function notifyAll() {
+                console.log(`Notify ${state.observers.length} observers `)
+                for (const observerFunc of state.observers) {
+                    observerFunc()
+                }
+            }
+
+
+
+            document.addEventListener('keydown', handleKeydown)
+
+            function handleKeydown(event) {
+                
+                const command = {
+                    playerId : 'player1',
+                    keyPressed :  event.key
+                }
+
+                game.movePlayer(command)
+
+                notifyAll()
+            }
+
         }
 
         function createGame() {
             
+            const state = {
+                players : {
+                    'player1' : {
+                        x : 1,
+                        y : 1
+                    },
+                    'player2' : {
+                        x : 9,
+                        y : 9
+                    }
+                },
+                fruits : {
+                    'fruit1' :  {
+                        x : 4,
+                        y : 1
+                    }
+                }
+            }
+
             function movePlayer(command) {
                 console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
                 const player = state.players[command.playerId]
@@ -73,12 +103,13 @@
             }
 
             return {
-                movePlayer
+                movePlayer,
+                state
             }
         }
 
         const game = createGame()
-
+        const keyboardListener = createKeydownListenner()
         renderstate()
         function renderstate() {
 
@@ -86,14 +117,14 @@
             contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
 
 
-            for (const playerId in state.players) {
-                 let currentPlayer = state.players[playerId]
+            for (const playerId in game.state.players) {
+                 let currentPlayer = game.state.players[playerId]
                 contextScreen.fillStyle = "black"
                 contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
             }
 
-            for (const fruitId in state.fruits) {
-                let currentFruit = state.fruits[fruitId]
+            for (const fruitId in game.state.fruits) {
+                let currentFruit = game.state.fruits[fruitId]
                 contextScreen.fillStyle = "green"
                 contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
             }
