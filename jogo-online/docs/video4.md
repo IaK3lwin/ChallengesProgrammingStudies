@@ -383,3 +383,145 @@ function createKeyboardListenner() {
     
 }
 ```
+
+Está pronto nosso **Subject**! Simples assim, do jeito que está 
+ainda não está finalizado, pois agora precisamos escrever algum
+observer nesse subject, para isso é simples!
+
+```JavaScript
+
+const game = createGame()
+const keyboardListener = createKeyboardListenner()
+keyboardListener.subscribe(game.movePlayer)
+
+```
+
+Agora está funcionando lindamente!
+
+### Código final do 3° estágio de desacoplamento
+
+```JavaScript
+
+const canvas = document.querySelector("#screen")
+
+const contextScreen = canvas.getContext('2d')
+
+
+
+function createKeydownListenner() {
+
+    const state = {
+        observers : []
+    }
+
+    function subscribe(observerFunc) {
+        /*
+            essa função faz a inscrição para o subject keyboardListenner
+        */
+        state.observers.push(observerFunc)
+    }
+
+    /*
+    * @description essa função faz a inscrição para o subject keyboardListenner
+    */
+    function notifyAll(command) {
+        console.log(`Notify ${state.observers.length} observers `)
+        for (const observerFunc of state.observers) {
+            observerFunc(command)
+        }
+    }
+
+
+
+    document.addEventListener('keydown', handleKeydown)
+
+    function handleKeydown(event) {
+        
+        const command = {
+            playerId : 'player1',
+            keyPressed :  event.key
+        }
+
+        notifyAll(command)
+    }
+
+    return {
+        subscribe
+    }
+
+}
+
+function createGame() {
+    
+    const state = {
+        players : {
+            'player1' : {
+                x : 1,
+                y : 1
+            },
+            'player2' : {
+                x : 9,
+                y : 9
+            }
+        },
+        fruits : {
+            'fruit1' :  {
+                x : 4,
+                y : 1
+            }
+        }
+    }
+
+    function movePlayer(command) {
+        console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+        const player = state.players[command.playerId]
+        console.log("tamanho da altura do canvas", canvas.height)
+        console.log(player)
+        if (command.keyPressed == "ArrowUp" && player.y > 0) {
+            player.y -= 1
+        }
+
+        if (command.keyPressed == 'ArrowDown' && player.y + 1 < canvas.height) {
+            player.y += 1
+        }
+        
+        if (command.keyPressed == 'ArrowLeft' && player.x - 1 >= 0) {
+            player.x -= 1
+        }
+
+        if (command.keyPressed == 'ArrowRight' && player.x + 1 < canvas.width) {
+            player.x += 1
+        }
+    }
+
+    return {
+        movePlayer,
+        state
+    }
+}
+
+const game = createGame()
+const keyboardListener = createKeydownListenner()
+keyboardListener.subscribe(game.movePlayer)
+renderstate()
+function renderstate() {
+
+    //clear screen
+    contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
+
+
+    for (const playerId in game.state.players) {
+            let currentPlayer = game.state.players[playerId]
+        contextScreen.fillStyle = "black"
+        contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (const fruitId in game.state.fruits) {
+        let currentFruit = game.state.fruits[fruitId]
+        contextScreen.fillStyle = "green"
+        contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+
+    requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
+}
+``` 
