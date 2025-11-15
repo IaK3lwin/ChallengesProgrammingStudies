@@ -39,7 +39,7 @@ acoplado ao outro ou quando o componente está acoplado ao outro."
 - 3° estágio: Componentes isolados e que não se conhecem (Não existe declaraçao nem criação deles)
 
 
-### Estágio 1
+### 1° Estágio 
 
 Código atual do projeto! Está uma bagunça com códigos do jogo misturado com inputs 
 onde é dificil dizer de onde pertecem o código:
@@ -308,14 +308,14 @@ o **observer** ele fará o que bem entender com essa
 informação.
 
 #### Subject é poucas ideias
-Uma característa importante sobre o **subject** para
+Uma característa importante sobre o **subject**, é que para
 ele não importa se algum observer está observando ele
 ou se a notificação é relevante para os observers, ele
 irá notificar todo mundo! O observer terá a responsabilidade
 de avaliar se aquela notificação é relevante para ele
 ou não. 
 
-![alt text](image-6.png)
+![alt text](image-8.png)
 
 Mas depois de toda essa explicação, pode surgir uma dúvida,
 para quem eu devo oferecer o poder de subject, de notificar 
@@ -348,5 +348,8 @@ function createKeyboardListenner() {
 ```
 
 Agora o handlekey se tornou um factory, agora basta transformar
-ela em um subject, e isso é tranquilo!!
+ela em um subject, e isso é tranquilo!! Pois para transformá-lo 
+em um subject basta colocar as funções de subject nesse factory:
+
+
 
