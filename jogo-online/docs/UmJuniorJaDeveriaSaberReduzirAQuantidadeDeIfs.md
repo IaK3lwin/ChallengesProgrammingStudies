@@ -287,3 +287,153 @@ functin createGame(command) {
 
 ## Código refatorado!
 
+```JavaScript
+const canvas = document.querySelector("#screen")
+
+const contextScreen = canvas.getContext('2d')
+
+
+
+function createKeydownListenner() {
+
+    const state = {
+        observers : []
+    }
+
+    function subscribe(observerFunc) {
+        /*
+            essa função faz a inscrição para o subject keyboardListenner
+        */
+        state.observers.push(observerFunc)
+    }
+
+    /*
+    * @description essa função faz a inscrição para o subject keyboardListenner
+    */
+    function notifyAll(command) {
+        console.log(`Notify ${state.observers.length} observers `)
+        for (const observerFunc of state.observers) {
+            observerFunc(command)
+        }
+    }
+
+
+
+    document.addEventListener('keydown', handleKeydown)
+
+    function handleKeydown(event) {
+        
+        const command = {
+            playerId : 'player1',
+            keyPressed :  event.key
+        }
+
+        notifyAll(command)
+    }
+
+    return {
+        subscribe
+    }
+
+}
+
+function createGame() {
+    
+    const state = {
+        players : {
+            'player1' : {
+                x : 1,
+                y : 1
+            },
+            'player2' : {
+                x : 9,
+                y : 9
+            }
+        },
+        fruits : {
+            'fruit1' :  {
+                x : 4,
+                y : 1
+            }
+        }
+    }
+
+    function movePlayer(command) {
+        console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+        const player = state.players[command.playerId]
+
+
+        const acceptMove = {
+            ArrowUp(player) {
+                console.log(`movePlayer.acceptMove -> Moving player to Up`)
+                if ( player.y > 0) {
+                    player.y -= 1
+                }
+            },
+            ArrowDown(player) {
+                console.log(`movePlayer.acceptMove -> Moving player to Down`)
+                if ( player.y + 1 < canvas.height ) {
+                    player.y += 1
+                }
+            },
+            ArrowLeft(player) {
+                console.log(`movePlayer.acceptMove -> Moving player to Left`)
+                if (player.x - 1 >= 0) {
+                    player.x -= 1
+                }
+            }, 
+            ArrowRight(player) {
+                console.log(`movePlayer.acceptMove -> Moving player to Right`)
+                if (player.x + 1 < canvas.width) {
+                    player.x += 1
+                }
+            }
+        }
+
+        const keyPressed = command.keyPressed
+        const moveFunction = acceptMove[keyPressed]
+
+        if (moveFunction) {
+            moveFunction(player)
+        }
+        
+        
+    }
+    
+    return {
+        movePlayer,
+        state
+    }
+    
+}
+
+const game = createGame()
+console.log(game)
+const keyboardListener = createKeydownListenner()
+keyboardListener.subscribe(game.movePlayer)
+renderstate()
+function renderstate() {
+
+    //clear screen
+    contextScreen.clearRect(0,0, 10, 10) // mais performatico que apenas redesenhar um react ta tela inteira
+
+
+    for (const playerId in game.state.players) {
+            let currentPlayer = game.state.players[playerId]
+        contextScreen.fillStyle = "black"
+        contextScreen.fillRect(currentPlayer.x, currentPlayer.y, 1, 1)
+    }
+
+    for (const fruitId in game.state.fruits) {
+        let currentFruit = game.state.fruits[fruitId]
+        contextScreen.fillStyle = "green"
+        contextScreen.fillRect(currentFruit.x, currentFruit.y, 1,1)
+    }
+
+    requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
+}
+```
+
+## Navegação //------
+
+<a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">Anterior</a> | <a href="">Próximo</a>
