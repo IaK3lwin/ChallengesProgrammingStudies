@@ -39,18 +39,15 @@ duas condicionais no mesmo if? ou o próprio uso do if, e se não for usar o if,
 swith case? mas... se usar swith case irá realmente resolver o problema? São essas indagações que  
 Filipe propoe, para ele o real problema é idenficar o problema!
 
-<quoteblock>
-    Sabe qual é o real problema aqui? e é obvio que  podem ter vários outros problemas né?! Mas
-    um que está gritante é aqui para cada nova input eu quiser aceitar no meu jogo para cada
-    nova tecla precionada eu vou precisar  vim aqui e adicionar uma nova condicional.
-    E eu não estou falando em ter que criar uma funcionalidade nova porque isso você não
-    vai ter escapar... né é uma nova regra de negócio, vão ter as condicionais relacionadas
-    a essa regra de negócio... mas o que eu estou falando é além disso. Além da regra de negócio
-    você vai ter que programar MANUALMENTE! mais uma condicional para conseguir chegar nessa regra de
-    negócio e quando a gente trata de inputs isso pode escalar muitooo rápido!
 
-    <author>Filiphe Deschamps</author>
-</quoteblock>
+> Sabe qual é o real problema aqui? e é obvio que  podem ter vários outros problemas né?! Mas
+"Um que está gritante é aqui para cada nova input eu quiser aceitar no meu jogo para cada
+nova tecla precionada eu vou precisar  vim aqui e adicionar uma nova condicional.
+E eu não estou falando em ter que criar uma funcionalidade nova porque isso você não
+vai ter escapar... né é uma nova regra de negócio, vão ter as condicionais relacionadas
+a essa regra de negócio... mas o que eu estou falando é além disso. Além da regra de negócio
+você vai ter que programar MANUALMENTE! mais uma condicional para conseguir chegar nessa regra de
+negócio e quando a gente trata de inputs isso pode escalar muitooo rápido!" -- Filiphe Deschamps.
 
 E a forma de que iremos aprender de implementar essas regras de inputs de forma
 escalável é usando objects literals no javascript. Utilizando a **relação** **chave** e **valor**
