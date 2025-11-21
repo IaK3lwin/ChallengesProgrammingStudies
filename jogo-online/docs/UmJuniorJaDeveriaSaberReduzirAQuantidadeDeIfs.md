@@ -40,8 +40,8 @@ swith case? mas... se usar swith case irá realmente resolver o problema? São e
 Filipe propoe, para ele o real problema é idenficar o problema!
 
 
-> Sabe qual é o real problema aqui? e é obvio que  podem ter vários outros problemas né?! Mas
-"Um que está gritante é aqui para cada nova input eu quiser aceitar no meu jogo para cada
+> "Sabe qual é o real problema aqui? e é obvio que  podem ter vários outros problemas né?! Mas
+Um que está gritante é aqui para cada nova input eu quiser aceitar no meu jogo para cada
 nova tecla precionada eu vou precisar  vim aqui e adicionar uma nova condicional.
 E eu não estou falando em ter que criar uma funcionalidade nova porque isso você não
 vai ter escapar... né é uma nova regra de negócio, vão ter as condicionais relacionadas
