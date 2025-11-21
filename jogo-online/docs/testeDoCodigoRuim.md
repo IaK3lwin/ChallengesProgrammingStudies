@@ -133,4 +133,4 @@ esse problema iremos aprender um novo design pattern!
 
 na próxima parte:
 
- <a href="../readme.md">Anterior</a>  | <a href="./umDosConceitosMaisImportantesSobreProgramacao.md">Próximo</a>
+ <a href="./umDosConceitosMaisImportantesSobreProgramacao.md">Anterior</a>  | <a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">Próximo</a>

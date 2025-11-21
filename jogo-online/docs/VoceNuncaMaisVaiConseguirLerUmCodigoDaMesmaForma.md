@@ -525,3 +525,6 @@ function renderstate() {
     requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
 }
 ``` 
+
+## navegação //-----------
+<a href="./testeDoCodigoRuim.md" >Anterior</a> | <a href="./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" ></a>

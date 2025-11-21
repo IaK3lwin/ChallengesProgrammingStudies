@@ -186,4 +186,4 @@ function renderGame() {
  ```
 
 ## navegação // -------------------------------
-<a href="./umDosConceitosMaisImportantesSobreProgramacao.md">Anterior</a> | <a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">próximo</a>
+<a href="../readme.md">Anterior</a> | <a href="./testeDoCodigoRuim.md">próximo</a>
