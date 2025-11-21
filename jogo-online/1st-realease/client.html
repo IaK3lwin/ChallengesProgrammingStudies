@@ -85,32 +85,54 @@
             function movePlayer(command) {
                 console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
                 const player = state.players[command.playerId]
-                console.log("tamanho da altura do canvas", canvas.height)
-                console.log(player)
-                if (command.keyPressed == "ArrowUp" && player.y > 0) {
-                    player.y -= 1
+
+
+                const acceptMove = {
+                    ArrowUp(player) {
+                        console.log(`movePlayer.acceptMove -> Moving player to Up`)
+                        if ( player.y > 0) {
+                            player.y -= 1
+                        }
+                    },
+                    ArrowDown(player) {
+                        console.log(`movePlayer.acceptMove -> Moving player to Down`)
+                        if ( player.y + 1 < canvas.height ) {
+                            player.y += 1
+                        }
+                    },
+                    ArrowLeft(player) {
+                        console.log(`movePlayer.acceptMove -> Moving player to Left`)
+                        if (player.x - 1 >= 0) {
+                            player.x -= 1
+                        }
+                    }, 
+                    ArrowRight(player) {
+                        console.log(`movePlayer.acceptMove -> Moving player to Right`)
+                        if (player.x + 1 < canvas.width) {
+                            player.x += 1
+                        }
+                    }
                 }
 
-                if (command.keyPressed == 'ArrowDown' && player.y + 1 < canvas.height) {
-                    player.y += 1
+                const keyPressed = command.keyPressed
+                const moveFunction = acceptMove[keyPressed]
+
+                if (moveFunction) {
+                    moveFunction(player)
                 }
                 
-                if (command.keyPressed == 'ArrowLeft' && player.x - 1 >= 0) {
-                    player.x -= 1
-                }
-
-                if (command.keyPressed == 'ArrowRight' && player.x + 1 < canvas.width) {
-                    player.x += 1
-                }
+                
             }
-
+            
             return {
                 movePlayer,
                 state
             }
+            
         }
 
         const game = createGame()
+        console.log(game)
         const keyboardListener = createKeydownListenner()
         keyboardListener.subscribe(game.movePlayer)
         renderstate()

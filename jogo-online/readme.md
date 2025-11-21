@@ -54,4 +54,4 @@ Nesse cápitulo iremos aprender um **novo design pattern** chamado **observer** 
 irá aprender um pouco sobre engenharia de sortware e conceitos como desacoplamento e acoplamento. 
 
 
-## <a href="" >Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)</a>
+## <a href="./docs/UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" >Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)</a>
