@@ -527,4 +527,4 @@ function renderstate() {
 ``` 
 
 ## navegação //-----------
-<a href="./testeDoCodigoRuim.md" >Anterior</a> | <a href="./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" ></a>
+<a href="./testeDoCodigoRuim.md" >Anterior</a> | <a href="./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" >Próximo</a>
