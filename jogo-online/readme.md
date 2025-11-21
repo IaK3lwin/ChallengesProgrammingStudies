@@ -48,4 +48,10 @@ regra de negócio do jogo.
 
 referência: [video do filipe](https://youtu.be/RJvktZnZn6A)
 
-## <a href="./docs/video4.md">Você nunca mais vai conseguir ler um código da mesma forma...</a>
+## <a href="./docs/VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">Você nunca mais vai conseguir ler um código da mesma forma...</a>
+
+Nesse cápitulo iremos aprender um **novo design pattern** chamado **observer** e além
+irá aprender um pouco sobre engenharia de sortware e conceitos como desacoplamento e acoplamento. 
+
+
+## <a href="" >Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)</a>

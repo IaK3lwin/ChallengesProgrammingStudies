@@ -299,7 +299,7 @@ como objeto principal que será observado, mas observado por quêm??
 Então entra os **Observer** que são objetos que iram observar o 
 **subject**.
 
-![alt text](image-7.png)
+![alt text](src/imgs/image-7.png)
 
 O que significa que qualquer mudança em seu estado,
 ou comportamento ele irá mandar uma notificação para
@@ -315,7 +315,7 @@ irá notificar todo mundo! O observer terá a responsabilidade
 de avaliar se aquela notificação é relevante para ele
 ou não. 
 
-![alt text](image-8.png)
+![alt text](src/imgs/image-8.png)
 
 Mas depois de toda essa explicação, pode surgir uma dúvida,
 para quem eu devo oferecer o poder de subject, de notificar 

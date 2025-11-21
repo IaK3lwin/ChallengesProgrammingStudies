@@ -26,7 +26,7 @@ Ok to proceed? (y) y
    └─────────────────────────────────────────┘
  ```
 
- ![magem do canvas](image.png)
+ ![magem do canvas](src/imgs/image.png)
 
 
   Logo após ele pede pra que esqueçamos do navegador e do canvas, e visualizasse uma tela com
@@ -36,9 +36,9 @@ Ok to proceed? (y) y
 representar a camada de apresentação com as informações que o Filipe descreveu, Não sabia
 usar o canvas e seus métodos então consultando a documentação cheguei a esse resultado:
 
-![código representação camada apresentação](image-1.png)
+![código representação camada apresentação](src/imgs/image-1.png)
 
-![alt text](image-2.png)
+![alt text](src/imgs/image-2.png)
 
 CARALHOOOO!! né que visualizei certo :D
 
@@ -47,7 +47,7 @@ CARALHOOOO!! né que visualizei certo :D
   Os dados do quadrado estão jogados pelo código, e isso não é interessante. Logo Filipe
 nos desafia a pensar em uma estrutura de dados que componha esse canvas:
 
-![canvas a ser estruturado](image-3.png)
+![canvas a ser estruturado](assets/imgs/image-3.png)
 
   Analisando a imagem, só consigo imaginar um objeto para a tela
 que contem os jogadores com sua posição, cor etc... Algo como isso:
@@ -125,7 +125,7 @@ function renderGame() {
 ```
   E temos um canvas desenhado na tela! ao chamdar o metodo renderGame():
 
-![alt text](image-4.png)
+![alt text](assets/imgs/image-4.png)
 
 Ignora o tamnho dela kkkkkkkk. Então o Filipe propoe modificar os valores
 da variável game pelo terminal, e ao modificar a coordenada x da fruta, ela
@@ -153,7 +153,7 @@ function renderGame() {
 }
 ```
 
-![alt text](image-5.png)
+![alt text](src/imgs/image-5.png)
 
  Então, nem tudo são flores, em nenhum momento estamos dizendo para apagar o "frame" anterior
  cusando esse efeito. Mas no desenvolvimento de games e esses tipos de ferramenta gráfica low level
@@ -184,3 +184,6 @@ function renderGame() {
 }
 
  ```
+
+## navegação // -------------------------------
+<a href="./umDosConceitosMaisImportantesSobreProgramacao.md">Anterior</a> | <a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">próximo</a>
