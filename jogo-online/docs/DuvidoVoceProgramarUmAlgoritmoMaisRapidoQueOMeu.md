@@ -105,6 +105,25 @@ function createGame() {
         delete state.fruits[command.fruitsId]
     }
 
+    ...
+
+    return {
+        movePlayer,
+        state,
+        addPlayer,
+        removePlayer,
+        addFruits,
+        removeFruits
+    } 
 }
 ```
 
+Por fim tornamos esses métodos publicos retornando eles! E essa parte está finalizada!
+
+![alt text](./assets/imgs/playeraddfunction.gif)
+
+Ou pelo menos quase! o que acontece se adicionar um player com o código atual?
+
+![alt text](./assets/imgs/playermovingerror.gif)
+
+O código quebra! 
