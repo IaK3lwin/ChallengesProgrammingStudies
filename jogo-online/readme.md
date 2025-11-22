@@ -55,3 +55,9 @@ irá aprender um pouco sobre engenharia de sortware e conceitos como desacoplame
 
 
 ## <a href="./docs/UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" >Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)</a>
+
+Nesse cápitulo iremos discutir sobre como reduzir a quantidades de ifs e descutir sobre engenharia de sortware
+
+## <a href="./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md">Dúvido você programar um algoritmo mais rápido que o meu!!!</a>
+
+Iremos implementar colissão e adição de players e frutas de forma dinâmica além de descutir sobre performace.
