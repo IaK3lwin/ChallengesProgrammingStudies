@@ -126,4 +126,63 @@ Ou pelo menos quase! o que acontece se adicionar um player com o código atual?
 
 ![alt text](./assets/imgs/playermovingerror.gif)
 
-O código quebra! 
+O código quebra! E o motivo é bem simples! olha esse trecho do nosso código?
+
+![alt text](./assets/imgs/playerhardcode.png)
+
+Estamos dizendo em hardcode qual player estamos movendo, o problema acontece
+quando adicionamos o jogador ao canvas:
+
+![alt text](./assets/imgs/codigoconsoleaddplayer.png)
+
+Seu playerId está como `"ian"` e tentamos mover o `"player1"` que não
+existe no estado atual do jogo! Para isso vamos adicionar uma validação na
+movimentação do player:
+
+```js
+function movePlayer(command) {
+    console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+    const player = state.players[command.playerId]
+
+
+    const acceptMove = {
+        ArrowUp(player) {
+            console.log(`movePlayer.acceptMove -> Moving player to Up`)
+            if ( player.y > 0) {
+                player.y -= 1
+            }
+        },
+        ArrowDown(player) {
+            console.log(`movePlayer.acceptMove -> Moving player to Down`)
+            if ( player.y + 1 < canvas.height ) {
+                player.y += 1
+            }
+        },
+        ArrowLeft(player) {
+            console.log(`movePlayer.acceptMove -> Moving player to Left`)
+            if (player.x - 1 >= 0) {
+                player.x -= 1
+            }
+        }, 
+        ArrowRight(player) {
+            console.log(`movePlayer.acceptMove -> Moving player to Right`)
+            if (player.x + 1 < canvas.width) {
+                player.x += 1
+            }
+        }
+    }
+
+    const keyPressed = command.keyPressed
+    const moveFunction = acceptMove[keyPressed]
+
+    if (player && moveFunction) { // valida se o proprio player existe
+        moveFunction(player)
+    }
+    
+}
+```
+
+antes da chamada do método de movimentação verificamos se o player realmente existe,
+só assim ela poderá ser executada!
+
+![alt text](./assets//imgs/moveingplayercompleted.gif)

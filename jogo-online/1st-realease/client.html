@@ -128,10 +128,9 @@
                 const keyPressed = command.keyPressed
                 const moveFunction = acceptMove[keyPressed]
 
-                if (moveFunction) {
+                if (player && moveFunction) {
                     moveFunction(player)
                 }
-                
                 
             }
             
