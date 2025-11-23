@@ -1,7 +1,7 @@
 # Challenges, studies on programming
 Perguntas e desafios sobre programação (algumas podem cair em entrevistas)
 
-## Aviso (importânte)
+## Aviso (importante)
 Esse repositório é apenas um estudo "documentado", boa parte dos conceitos, explicações etc 
 não são de minha autoria. Deixarei créditos aos conteúdos que foram utilizados para criar esse repósitorio!
 

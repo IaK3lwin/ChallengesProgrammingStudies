@@ -1,7 +1,7 @@
 ## Duvido você programar um algoritmo mais rápido que o meu!!!
 
 O que verá nesse cápitulo:
-- Implementação de adição de players e frutas de forma dinâmica;
+- Implementação de adição e exclusão de players e frutas de forma dinâmica;
 - Implementação do sistema de colisão;
 - Finalizando assim a camada de jogo.
 
@@ -52,8 +52,7 @@ function createGame() {
 }
 ```
 
-Função super simples e nada muito complexo, perceba que padronizamos a entidade command como parametro de 
-acoplamento, dessa forma padronizado poderemos evitar confusões.
+Função super simples, perceba que padronizamos a "entidade" command como parâmetro de dependência, dessa forma evitamos confusões. command não necessariamente é uma entidade real, pois não instanciamos; ela é apenas uma padronização que implementamos no código. 
 
 ```js
 function createGame() {
@@ -122,7 +121,7 @@ Por fim tornamos esses métodos publicos retornando eles! E essa parte está fin
 
 ![alt text](./assets/imgs/playeraddfunction.gif)
 
-Ou pelo menos quase! o que acontece se adicionar um player com o código atual?
+Ou pelo menos quase! o que acontece se adicionar um player com o código atual e aperta uma tecla de movimentação?
 
 ![alt text](./assets/imgs/playermovingerror.gif)
 
@@ -131,7 +130,7 @@ O código quebra! E o motivo é bem simples! olha esse trecho do nosso código?
 ![alt text](./assets/imgs/playerhardcode.png)
 
 Estamos dizendo em hardcode qual player estamos movendo, o problema acontece
-quando adicionamos o jogador ao canvas:
+quando o player adicionado não existe:
 
 ![alt text](./assets/imgs/codigoconsoleaddplayer.png)
 
@@ -186,3 +185,36 @@ antes da chamada do método de movimentação verificamos se o player realmente 
 só assim ela poderá ser executada!
 
 ![alt text](./assets//imgs/moveingplayercompleted.gif)
+
+## Sistema de colisão
+
+> "As duas formas que eu vou trazer aqui são extremamente simples, mas elas vão nivelar todo mundo, pra daí, quem quiser da o próximo passo nesse tipo de otimização. A primeira forma vamos dizer que ela é "grosseira". E eu digo isso porque a gente vai criar um novo método que não recebe nenhum parâmetro e el vai verificar TUDO CONTRA TUDO! inclusive eu acho que não tem nem como fazer um jeito que fique mais pesado do que isso" - Filipe Deschamps
+
+```js
+
+function createGame() {
+    ...
+    function checkColission() {
+        for (const playerIdCurrent in state.players) {
+            const playerCurrent = state.players[playerIdCurrent]
+
+            for (const fruitIdCurrent in state.fruits) { // O(n²)
+                const fruintCurrent = state.fruits[fruitIdCurrent]
+
+                if (playerCurrent.x == fruitCurrent.x && playerCurrent.y == fruitCurrent.y) {
+                    deleteFruit({fruitId: fruitIdCurrent})
+                }
+            }
+        }
+    }
+}
+
+```
+
+Bom, Essa é a primeira versão do código de colisão, funciona, porem é a maneira
+mas performatica? Verificamos todos os players e logo em seguida percorremos por todas frutas! 
+o tempo em notação big o se não me engano é O(n²). 
+
+![alt text](./assets/imgs/graficoNotacaoBigO.png)
+
+Veja o quanto escala o tempo de execução conforme a entrada aumenta
