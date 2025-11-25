@@ -433,4 +433,4 @@ function renderstate() {
 
 ## Navegação //------
 
-<a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">Anterior</a> | <a href="">Próximo</a>
+[Anterior](./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
