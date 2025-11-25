@@ -191,7 +191,7 @@ só assim ela poderá ser executada!
 
 ![alt text](./assets//imgs/moveingplayercompleted.gif)
 
-Outra coisa que iremos evitar verificando a existencia do player antes de de fato move-lo
+Outra coisa que iremos evitar verificando a existencia do player antes de move-lo
 é que em produção, com o jogo rodando em multiplayer, pode acontecer do servidor dizer
 que o player saiu e um evento fantasma dizendo para movimentar o mesmo jogador ser
 enviado pelo servidor. Algo extramente comum em um ambiente multiplayer.
