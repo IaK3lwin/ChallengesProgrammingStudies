@@ -1,15 +1,16 @@
 # Separation of Concerns
 
-  Nessa parte você irá aprender esse paradigma de programação, além de explorar o canvas do HTML
-que levará você para o próximo nível!
+## Navegação //-----
 
-Inicialmente o Filipe cria um novo diretorio com a primeira realease do projeto criado um client.html, ele ultiliza o canvas com 500px de largura e altura com uma borda cinza. 
+[Anterior](../readme.md) | [Próximo](./testeDoCodigoRuim.md)
 
+Nessa parte você irá aprender esse paradigma de programação, além de explorar o canvas do HTML que levará você para o próximo nível!
 
+Inicialmente o Filipe cria um novo diretorio com a primeira realease do projeto criado um client.html, ele ultiliza o canvas com 500px de largura e altura com uma borda cinza.
 
 E inicia o arquivo estático usando o serve, um comando que vem por padrão no npx:
 
-```
+```terminal
 @IaK3lwin ➜ /workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease (jogo-online-firstRelease) $ npx serve
 Need to install the following packages:
 serve@14.2.5
@@ -28,13 +29,9 @@ Ok to proceed? (y) y
 
  ![magem do canvas](src/imgs/image.png)
 
-
-  Logo após ele pede pra que esqueçamos do navegador e do canvas, e visualizasse uma tela com
-500px de altura e largura com um quadrado de 200px com fundo vermelho. visualizar a camada de presentação! Apenas com os dados que o Filipe apresentou. Bom vários cerebros com as mesmas informações que o Filipe passsou e visualizaram de formas diferentes, e segundo ele próprio isso não é bom.
-
-  Ele então começa a programar o que tinha dito, então eu pausei o vídeo e fui tentar 
-representar a camada de apresentação com as informações que o Filipe descreveu, Não sabia
-usar o canvas e seus métodos então consultando a documentação cheguei a esse resultado:
+  Logo após ele pede pra que esqueçamos do navegador e do canvas, e visualizasse uma tela
+  com 500px de altura e largura com um quadrado de 200px com fundo vermelho. visualizar a camada de presentação! Apenas com os dados que o Filipe apresentou. Bom vários cerebros com as mesmas informações que o Filipe passsou e visualizaram de formas diferentes, e segundo ele próprio isso não é bom.
+Ele então começa a programar o que tinha dito, então eu pausei o vídeo e fui tentar representar a camada de apresentação com as informações que o Filipe descreveu, Não sabia usar o canvas e seus métodos então consultando a documentação cheguei a esse resultado:
 
 ![código representação camada apresentação](src/imgs/image-1.png)
 
@@ -42,7 +39,7 @@ usar o canvas e seus métodos então consultando a documentação cheguei a esse
 
 CARALHOOOO!! né que visualizei certo :D
 
-## Próximo desafio!
+## Próximo desafio
 
   Os dados do quadrado estão jogados pelo código, e isso não é interessante. Logo Filipe
 nos desafia a pensar em uma estrutura de dados que componha esse canvas:
@@ -52,7 +49,7 @@ nos desafia a pensar em uma estrutura de dados que componha esse canvas:
   Analisando a imagem, só consigo imaginar um objeto para a tela
 que contem os jogadores com sua posição, cor etc... Algo como isso:
 
-```
+```js
 Screen:
     X : 10
     Y : 10
@@ -73,16 +70,17 @@ Screen:
 
 ```
 
-  Mas sendo bem sincerro, não acho que seja a solução certa. Até porque 
+  Mas sendo bem sincerro, não acho que seja a solução certa. Até porque
 o paradigma que veremos nesse vídeo se chama "SEPARATION OF CONCERNS"
 então acho pouco provável.
 
 ### Solução do Filipe
+
   A solução dele foi parecida, mas não igual. Talvez no subonciente por conta de já
-ter me esbarrado com a solução dele meu cerebro fez algo parecido, não sei. Um fato 
+ter me esbarrado com a solução dele meu cerebro fez algo parecido, não sei. Um fato
 interessante é que minha memória é horrível então não sei se foi exatamente isso.
 
-```
+```js
 const game = {
     players : {
         player1 : {x:1, y : 1},
@@ -105,10 +103,10 @@ pintar os objetos a camada de apresentação.
 ### Desenhando o canvas apartir da estrutura de dados
 
   Então se para desenhar um quadrado no canvas bastas preencher o quadrado e
-desenhar um quadrado com a posição e o tamnho só precisamos extrair as informações 
+desenhar um quadrado com a posição e o tamnho só precisamos extrair as informações
 da estrutura de dados e passar seus valores para o canvas:
 
-```
+```js
 function renderGame() {
     for (let playerId in game.players) {
             let currentPlayer = game.players[playerId]
@@ -123,7 +121,8 @@ function renderGame() {
     }
 }
 ```
-  E temos um canvas desenhado na tela! ao chamdar o metodo renderGame():
+
+E temos um canvas desenhado na tela! ao chamdar o metodo `renderGame():`
 
 ![alt text](assets/imgs/image-4.png)
 
@@ -134,7 +133,7 @@ de renderGame uma única vez. É aí que ele presenta o método `requestAnimatio
 Que trás diversas otimizações e foi feita para esses tipo de problema. Vamos usar
 a recursão para que a própria renderGame chame ela mesma, mas usando o requestAnimationFrame.
 
-```
+```js
 renderGame()
 function renderGame() {
     for (let playerId in game.players) {
@@ -159,7 +158,7 @@ function renderGame() {
  cusando esse efeito. Mas no desenvolvimento de games e esses tipos de ferramenta gráfica low level
  então para resolver isso, basta antes de renderizar o novo "frame", pinta a tela inteira de branco.
 
- ```
+ ```js
 
 renderGame()
 function renderGame() {
@@ -185,5 +184,6 @@ function renderGame() {
 
  ```
 
-## navegação // -------------------------------
-<a href="../readme.md">Anterior</a> | <a href="./testeDoCodigoRuim.md">próximo</a>
+## Navegação //------
+
+[Anterior](../readme.md) | [Próximo](./testeDoCodigoRuim.md)

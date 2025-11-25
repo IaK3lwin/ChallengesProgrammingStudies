@@ -270,6 +270,6 @@ ao decorrer do projeto, voltamos e refatoramos ele.
 
 ![Collison sistem finish](./assets/imgs/finishcollision.gif)
 
-## navegação //---------
+## navegação //----------
 
-[Anterior](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
+[Anterior](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md) | [Próximo](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md)

@@ -1,19 +1,24 @@
-# Você nunca mais vai conseguir ler um código da mesma forma...
+# Você nunca mais vai conseguir ler um código da mesma forma
 
-> "É sério! Você vai se sentir mais inteligente, quando aprender esse 
+## Navegação //------
+
+[Anterior](./testeDoCodigoRuim.md) | [Próximo](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md)
+
+> "É sério! Você vai se sentir mais inteligente, quando aprender esse
     design pattern e o motivo é bem simples, eu vou explicar ele de uma
     forma que você vai começar a notar as linhas de seu código de uma
     forma diferente, de uma forma mais sofisticada." - Filipe Deschamps
 
 Essa são as primeiras frases dita pelo Filipe, explica bem o que
-terá nessa leitura. Afinal esse documento não passa de um vídeo 
+terá nessa leitura. Afinal esse documento não passa de um vídeo
 manuescrito para facilitar o aprendizado de minha humilde pessoa.
 
-## Aprendizados contido nessa parte:
+## Aprendizados contido nessa parte
+
 - Arquitetura de software;
 - principalmente desacoplamento
 
-No última capitulo terminamos com uma albúrdia de código! 
+No última capitulo terminamos com uma albúrdia de código!
 com responsábilidades espalhadas com má pratica de desenvolvimento.
 Mas como identificamos se aquela parte do código está no lugar correto?
 Filipe trás uma pergunta milagrosa:
@@ -22,15 +27,15 @@ Filipe trás uma pergunta milagrosa:
 entender que está acoplado ou não então para treinar seu cérebro a cobrar
 isso do seu código  nada melhor do que sempre se fazer um questionamento,
 se fazer uma pergunta a cada linha de código e essa pergunta é bem simples
-...." 
+....
 
-> ## De quem é esse código???
-> "E se você continuamente fizer essa pergunta você vai começar a presta atenção
+## De quem é esse código???
+
+> E se você continuamente fizer essa pergunta você vai começar a presta atenção
 na resposta e ai a sua cabeça vai entrar em uma recursão maluca, porque dai você
 vai começar a se perguntar se essa resposta está certa, é isso que vai começar
 a mostrar as divisorias do seu sistema, os limites de seus componentes e se um está
 acoplado ao outro ou quando o componente está acoplado ao outro."
-
 
 ## Estágios de desacoplamento
 
@@ -38,10 +43,9 @@ acoplado ao outro ou quando o componente está acoplado ao outro."
 - 2° estáfio: Apesar dos componentes estarem isolados, um código conhece o outro.
 - 3° estágio: Componentes isolados e que não se conhecem (Não existe declaraçao nem criação deles)
 
+### 1° Estágio
 
-### 1° Estágio 
-
-Código atual do projeto! Está uma bagunça com códigos do jogo misturado com inputs 
+Código atual do projeto! Está uma bagunça com códigos do jogo misturado com inputs
 onde é dificil dizer de onde pertecem o código:
 
 ```JavaScript
@@ -117,24 +121,24 @@ function renderGame() {
     requestAnimationFrame(renderGame) // chama o método, fazendo com que atualize a tela a todo frame
 }
 ```
+
 Um não é pior que outro na pratica, pois o primeiro estágio é exelente para
 prototipagem ou para entregar algo que precisar ser entrege de forma rápida!
 Ou para testar se o que está sendo criado é útil ou funciona, ou até mesmo
-para descobrir o que falta assim como entender melhor o que você está 
-desenvolvendo. 
-
+para descobrir o que falta assim como entender melhor o que você está
+desenvolvendo.
 
 ### 2° estágio de desacoplamento
 
   Componentes Separados, mas que ainda se conhecem! Vamos
 separa-los mas ainda chamando um dentro do outro causando
-dependencia. 
+dependencia.
 
 #### Refatorando
 
 Para isolar as camadas vamos utilizar um design pattern chamado
 Factory, ainda não iremos aprofundar muito sobre, começaremos separando
-a camada de jogo. 
+a camada de jogo.
 
 ```JavaScript
     function createGame() {
@@ -151,13 +155,12 @@ a camada de jogo.
 
 O que fizemos? criamos a factory da camada de jogo,
 onde conterá os códigos de regras de jogo que retorna um
-objeto que será as regras do game. 
+objeto que será as regras do game.
 
-agora vamos refazer a implementação de movimentação do player, 
-que ainda não está boa e necessita de melhoria.
+agora vamos refazer a implementação de movimentação do player, que ainda não está boa e necessita de melhoria.
 
-Lembrando que quanto menos resistência você tiver para deletar 
-código melhor irá evoluir! 
+Lembrando que quanto menos resistência você tiver para deletar código melhor irá evoluir!
+
 ```JavaScript
     //vamos excluir toda lógica do handleKey e colocar no por enquanto na factory do game
     function createGame() {
@@ -194,7 +197,8 @@ agora fizemos o encapsulamento ou isolamento da camada
 de jogos, a regra de negócio de movimentação ainda não
 está boa, mas logo iremos melhorá-lo.
 
-#### Código final do 2° estágio de desacoplamento 
+#### Código final do 2° estágio de desacoplamento
+
 ```JavaScript
 const canvas = document.querySelector("#screen")
 
@@ -296,8 +300,7 @@ Agora a coisa fica muito interessante e maluca! vamos utilizar
 o **design pettern** chamado **obsover** e como ele funciona?
 Inicialmente terá um objeto chamado de **Subject**, veja ele
 como objeto principal que será observado, mas observado por quêm??
-Então entra os **Observer** que são objetos que iram observar o 
-**subject**.
+Então entra os **Observer** que são objetos que iram observar o **subject**.
 
 ![alt text](src/imgs/image-7.png)
 
@@ -308,21 +311,14 @@ o **observer** ele fará o que bem entender com essa
 informação.
 
 #### Subject é poucas ideias
-Uma característa importante sobre o **subject**, é que para
-ele não importa se algum observer está observando ele
-ou se a notificação é relevante para os observers, ele
-irá notificar todo mundo! O observer terá a responsabilidade
-de avaliar se aquela notificação é relevante para ele
-ou não. 
+
+Uma característa importante sobre o **subject**, é que para ele não importa se algum observer está observando ele ou se a notificação é relevante para os observers, ele irá notificar todo mundo! O observer terá a responsabilidade de avaliar se aquela notificação é relevante para ele ou não.
 
 ![alt text](src/imgs/image-8.png)
 
-Mas depois de toda essa explicação, pode surgir uma dúvida,
-para quem eu devo oferecer o poder de subject, de notificar 
-os **observer** e a quem devo confiar o poder de **observer**??
+Mas depois de toda essa explicação, pode surgir uma dúvida, para quem eu devo oferecer o poder de subject, de notificar os **observer** e a quem devo confiar o poder de **observer**??
 
-Bom, não existe regra! tecnicamente é ilimitado as opções, é 
-questão de implementar os métodos certos para os objetos.
+Bom, não existe regra! tecnicamente é ilimitado as opções, é questão de implementar os métodos certos para os objetos.
 
 Nesse exemplo, o Filipe irá transformar o handleKeydown em um
 subject! para notificar as teclas pressionadas, partiu refatoraçãoo!!
@@ -348,8 +344,7 @@ function createKeyboardListenner() {
 ```
 
 Agora o handlekey se tornou um factory, agora basta transformar
-ela em um subject, e isso é tranquilo!! Pois para transformá-lo 
-em um subject basta colocar as funções de subject nesse factory:
+ela em um subject, e isso é tranquilo!! Pois para transformá-lo em um subject basta colocar as funções de subject nesse factory:
 
 ```JavaScript
 function createKeyboardListenner() {
@@ -384,9 +379,7 @@ function createKeyboardListenner() {
 }
 ```
 
-Está pronto nosso **Subject**! Simples assim, do jeito que está 
-ainda não está finalizado, pois agora precisamos escrever algum
-observer nesse subject, para isso é simples!
+Está pronto nosso **Subject**! Simples assim, do jeito que está ainda não está finalizado, pois agora precisamos escrever algum observer nesse subject, para isso é simples!
 
 ```JavaScript
 
@@ -400,7 +393,7 @@ Agora está funcionando lindamente!
 
 ### Código final do 3° estágio de desacoplamento
 
-```JavaScript
+```js
 
 const canvas = document.querySelector("#screen")
 
@@ -524,7 +517,8 @@ function renderstate() {
 
     requestAnimationFrame(renderstate) // chama o método, fazendo com que atualize a tela a todo frame
 }
-``` 
+```
 
-## navegação //-----------
-<a href="./testeDoCodigoRuim.md" >Anterior</a> | <a href="./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md" >Próximo</a>
+## Navegação //-------
+
+[Anterior](./testeDoCodigoRuim.md) | [Próximo](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md)

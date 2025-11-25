@@ -1,7 +1,10 @@
 # Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)
 
-No último capitulo melhoramos significamente o código do jogo, mas 
-ainda falta muitas coisas, após separar as lógicas das camadas utilizando
+## Navegação //-------
+
+[Anterior](./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
+
+No último capitulo melhoramos significamente o código do jogo, mas  ainda falta muitas coisas, após separar as lógicas das camadas utilizando
 o **design pattern observer**, faltou da uma melhorada na lógica em si
 da camada de regras de negócios do jogo!
 

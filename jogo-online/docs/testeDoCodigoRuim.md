@@ -1,4 +1,8 @@
-# Teste do código ruim (quero ver você passar!)
+# Teste do código mal feito (quero ver você passar!)
+
+## Navegação //------
+
+[Anterior](./umDosConceitosMaisImportantesSobreProgramacao.md) | [Próximo](./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md)
 
 Nesse vídeo o Filipe almeja fazer com que a gente comece a pensar como programadores!
 E que o conteúdo apresentado agora é mais importante que o jogo em si.
@@ -133,4 +137,6 @@ esse problema iremos aprender um novo design pattern!
 
 na próxima parte:
 
- <a href="./umDosConceitosMaisImportantesSobreProgramacao.md">Anterior</a>  | <a href="./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md">Próximo</a>
+## navegação //------
+
+[Anterior](./umDosConceitosMaisImportantesSobreProgramacao.md) | [Próximo](./VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md)
