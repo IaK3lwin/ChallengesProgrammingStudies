@@ -35,7 +35,7 @@
             * @description essa função faz a inscrição para o subject keyboardListenner
             */
             function notifyAll(command) {
-                console.log(`Notify ${state.observers.length} observers `)
+                // console.log(`Notify ${state.observers.length} observers `)
                 for (const observerFunc of state.observers) {
                     observerFunc(command)
                 }
@@ -94,31 +94,31 @@
             }
 
             function movePlayer(command) {
-                console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
+                // console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
                 const player = state.players[command.playerId]
 
 
                 const acceptMove = {
                     ArrowUp(player) {
-                        console.log(`movePlayer.acceptMove -> Moving player to Up`)
+                        // console.log(`movePlayer.acceptMove -> Moving player to Up`)
                         if ( player.y > 0) {
                             player.y -= 1
                         }
                     },
                     ArrowDown(player) {
-                        console.log(`movePlayer.acceptMove -> Moving player to Down`)
+                        // console.log(`movePlayer.acceptMove -> Moving player to Down`)
                         if ( player.y + 1 < canvas.height ) {
                             player.y += 1
                         }
                     },
                     ArrowLeft(player) {
-                        console.log(`movePlayer.acceptMove -> Moving player to Left`)
+                        // console.log(`movePlayer.acceptMove -> Moving player to Left`)
                         if (player.x - 1 >= 0) {
                             player.x -= 1
                         }
                     }, 
                     ArrowRight(player) {
-                        console.log(`movePlayer.acceptMove -> Moving player to Right`)
+                        // console.log(`movePlayer.acceptMove -> Moving player to Right`)
                         if (player.x + 1 < canvas.width) {
                             player.x += 1
                         }
@@ -130,8 +130,19 @@
 
                 if (player && moveFunction) {
                     moveFunction(player)
+                    checkCollision(player)
                 }
                 
+            }
+
+            function checkCollision(player) {
+                for (const fruitCurrentId in state.fruits) {
+                    const fruitCurrent = state.fruits[fruitCurrentId]
+
+                    if (fruitCurrent.x === player.x && fruitCurrent.y === player.y) {
+                        removeFruit({fruitId : fruitCurrentId})
+                    }
+                }
             }
             
             return {
@@ -146,6 +157,11 @@
         }
 
         const game = createGame()
+        game.addFruit({fruitId : 'fruit1', fruitX : 3, fruitY : 2})
+        game.addFruit({fruitId : 'fruit2', fruitX : 2, fruitY : 7})
+        game.addPlayer({playerId : 'player1', playerX : 0, playerY : 0})
+
+
         const keyboardListener = createKeydownListenner()
         keyboardListener.subscribe(game.movePlayer)
         renderstate()

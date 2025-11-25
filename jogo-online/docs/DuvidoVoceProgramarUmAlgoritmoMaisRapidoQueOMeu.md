@@ -1,6 +1,7 @@
-## Duvido você programar um algoritmo mais rápido que o meu!!!
+# Duvido você programar um algoritmo mais rápido que o meu
 
 O que verá nesse cápitulo:
+
 - Implementação de adição e exclusão de players e frutas de forma dinâmica;
 - Implementação do sistema de colisão;
 - Finalizando assim a camada de jogo.
@@ -14,6 +15,7 @@ mas quando mostra em estrutura de dados nção]
 por natureza, o bom é que nesse vídeo a gente vai treinar exatamente isso..." Filipe Deschamps
 
 Para finalizar a camada do jogo não falta muito, o MVP da camada de jogo seria:
+
 - adicionar jogador;
 - remover jogador;
 - adicionar frutas;
@@ -52,7 +54,7 @@ function createGame() {
 }
 ```
 
-Função super simples, perceba que padronizamos a "entidade" command como parâmetro de dependência, dessa forma evitamos confusões. command não necessariamente é uma entidade real, pois não instanciamos; ela é apenas uma padronização que implementamos no código. 
+Função super simples, perceba que padronizamos a "entidade" command como parâmetro de dependência, dessa forma evitamos confusões. command não necessariamente é uma entidade real, pois não instanciamos; ela é apenas uma padronização que implementamos no código.
 
 ```js
 function createGame() {
@@ -194,7 +196,13 @@ só assim ela poderá ser executada!
 
 function createGame() {
     ...
-    function checkColission() {
+
+     if (player && moveFunction) {
+        moveFunction(player)
+        checkCollision() //verificando colisão
+    }
+
+    function checkCollision() {
         for (const playerIdCurrent in state.players) {
             const playerCurrent = state.players[playerIdCurrent]
 
@@ -212,9 +220,44 @@ function createGame() {
 ```
 
 Bom, Essa é a primeira versão do código de colisão, funciona, porem é a maneira
-mas performatica? Verificamos todos os players e logo em seguida percorremos por todas frutas! 
-o tempo em notação big o se não me engano é O(n²). 
+mais performatica? Verificamos todos os players e logo em seguida percorremos por todas frutas.
+O tempo em notação big O se não me engano é O(n²).  
 
 ![alt text](./assets/imgs/graficoNotacaoBigO.png)
 
-Veja o quanto escala o tempo de execução conforme a entrada aumenta
+Veja o quanto escala o tempo de execução conforme a entrada aumenta, isso é um
+tempo O(n²). Mas como podemos melhorar ele com pouca alteração??
+
+Eu acho que não é necessário verificar **TODOS OS PLAYER**, pensa comigo, se só vamos
+chamar a função de colisão quando pressionar os botões de movimentação, o que significa que
+só vamos verificar a colisão caso nosso personagem se mover, basta verificar a colissão com
+esse player!! saindo de um tempo de execução O(n²) para O(n) que já é melhor.
+
+```js
+function createGame() {
+    ...
+
+    if (player && moveFunction) {
+        moveFunction(player)
+        checkCollision(player) //verificando colisão
+    }
+
+
+    function checkCollision(playerCurrent) {
+       
+        for (const fruitIdCurrent in state.fruits) { // O(n²)
+            const fruintCurrent = state.fruits[fruitIdCurrent]
+
+            if (playerCurrent.x == fruitCurrent.x && playerCurrent.y == fruitCurrent.y) {
+                deleteFruit({fruitId: fruitIdCurrent})
+            }
+        }
+    }
+    
+}
+```
+
+Dessa forma temos o sistema de colisão! Caso esse algoritmo fique insustentável
+ao decorrer do projeto, voltamos e refatoramos ele.
+
+![Collison sistem finish](./assets/imgs/finishcollision.gif)

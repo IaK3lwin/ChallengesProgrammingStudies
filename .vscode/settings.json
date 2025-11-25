@@ -1,0 +1,9 @@
+{
+    "chat.disableAIFeatures": true,
+    "folder-color.pathColors": [
+        {
+            "folderPath": "ChallengesProgrammingStudies/jogo-online/docs/",
+            "color": "foldercolorizer.color_00cccc"
+        }
+    ]
+}
