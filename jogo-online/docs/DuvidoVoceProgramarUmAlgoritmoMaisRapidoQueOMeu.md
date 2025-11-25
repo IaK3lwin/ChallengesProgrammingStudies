@@ -1,5 +1,9 @@
 # Duvido você programar um algoritmo mais rápido que o meu
 
+## navegação //---------
+
+[Anterior](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
+
 O que verá nesse cápitulo:
 
 - Implementação de adição e exclusão de players e frutas de forma dinâmica;
@@ -8,8 +12,7 @@ O que verá nesse cápitulo:
 
 Filipe começa com a seguinte afirmação:
 
-[imagem do jogo com colisão para demostrar que nosso cerebro já vem econhece um algoritmo de colisão
-mas quando mostra em estrutura de dados nção]
+![Collison sistem finish](./assets/imgs/finishcollision.gif)
 
 > "è engraçado porque a gente tem dificuldade de fazer em código algo que o nosso cerebro já sabe fazer
 por natureza, o bom é que nesse vídeo a gente vai treinar exatamente isso..." Filipe Deschamps
