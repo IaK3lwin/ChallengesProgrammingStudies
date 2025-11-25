@@ -261,3 +261,7 @@ Dessa forma temos o sistema de colisão! Caso esse algoritmo fique insustentáve
 ao decorrer do projeto, voltamos e refatoramos ele.
 
 ![Collison sistem finish](./assets/imgs/finishcollision.gif)
+
+## navegação //---------
+
+[Anterior](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
