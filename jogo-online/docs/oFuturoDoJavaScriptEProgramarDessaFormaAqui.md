@@ -1,6 +1,6 @@
 # O futuro do javascript é programar dessa forma aqui
 
-Nas páginas anteriores, já estava encomodando a quantidade de código
+Nas páginas anteriores, já estava incomodando a quantidade de código
 em um único arquivo, que são de camadas diferentes além de que, a quantidade
 de código está dificultando a leitura.
 
@@ -14,7 +14,7 @@ de código está dificultando a leitura.
 
 O que fizemos? separamos o código do keyboardListener em um arquivo
 e invocamos ele com a tag script. O que o navegador faz é simples,
-ele esbarra com uma tag script, vê o `src` e baixa o arquivo logo em seguida
+ele esbarra com uma tag `<script></script>`, vê o `src` e baixa o arquivo logo em seguida
 executa, assim ele fica um script global.
 
 ```js
@@ -42,7 +42,7 @@ pois essa função já foi baixada e executada.
 Primeiro que ela pode bloquear a **"Main Thread"**, que a depender do tamanho do script
 pode **impedir a renderização da página**, em que tempos mordernos basta passar
 2 segundos que a probabilidade do usuário sair é significamente grande. Com tudo os devs
-começaram a mover a tag que invoca scripts para o final do body das páginas
+começaram a mover a tag que invoca scripts para o final do body das páginas,
 que gera outro problema.
 
 ### Scripts não invocados
@@ -69,8 +69,8 @@ que gera outro problema.
 
 Nesse caso, o que aconteceria? O código **retornaria um error!** Pois a função `functionExemple2` ainda **não foi baixada e nem executada**. A ordem em que a tag
 `script` é chamada é sincrona. O que significa que ela só será baixada e executada quando
-o navegador processar aquela tag, além de que como não são módulos separados, são literalmente scripts globais que se o projeto for complexo ter uma quantidade gigantesca
-de métodos, variáveis e classes globais a confusão que seria.
+o navegador processar aquela tag, além de que como não são módulos separados, são literalmente scripts globais que se o projeto for complexo pode ter uma quantidade gigantesca
+de métodos, variáveis e classes globais, que confusão isso seria!
 
 ## Breve história da evolução do javaScript
 
