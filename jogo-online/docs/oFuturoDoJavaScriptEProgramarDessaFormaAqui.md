@@ -82,7 +82,7 @@ que o node "modularizou" o javascript. Mas o javascript nativo ainda não tinha 
 ## Módulos no javascript
 
 Módulos são uma espécie de **"sala" privada**, onde seus códigos podem ser criados e que cujo
-seu **acesso é registro apenas o própria "sala"**, mas com a capacidade de **poder "Emprestar" suas ferramentas**. Imagine que cada sala tenha um chefe de sala que diz o que pode ser emprestado ou não, e que se poder ele diz: "aqui na minha sala tem tal coisa, que eu deixo ela exposta para quem quiser usá-la".
+seu **acesso é restrito apenas o própria "sala"**, mas com a capacidade de **poder "Emprestar" suas ferramentas**. Imagine que cada sala tenha um chefe de sala que diz o que pode ser emprestado ou não, e que se poder ele diz: "aqui na minha sala tem tal coisa, que eu deixo ela exposta para quem quiser usá-la".
 
 ## Transformando o keyboardListanner em módulo
 
