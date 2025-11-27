@@ -86,7 +86,7 @@ seu **acesso é restrito apenas o própria "sala"**, mas com a capacidade de **p
 
 ## Transformando o keyboardListanner em módulo
 
-Para isso é bem simples, basta a frente da declaração da função iserir a palavra chave `export default`:
+Para isso é bem simples, basta a frente da declaração da função inserir a palavra chave `export default`:
 
 ![transform keyboardlistenner in module](./assets/imgs/transformKeyboardListenneerInModule.gif)
 
