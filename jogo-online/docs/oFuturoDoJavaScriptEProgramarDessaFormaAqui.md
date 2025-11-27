@@ -149,7 +149,7 @@ Para importa basta dizer que o script é do tipo módulo:
 
 ```
 
-Isso se torna necessário pois para **`exportar`** um módulo, o script
+Isso se torna necessário pois para **`importar`** um módulo, o script
 que for usá-lo obrigatoriamente tem que ser um módulo. Agora basta dizer que
 você que **`importar`** um módulo:
 
