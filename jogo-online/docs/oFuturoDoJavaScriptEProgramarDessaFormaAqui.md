@@ -178,7 +178,7 @@ nos deparamos com um problema! As variáveis globais!
 ![rrror](./assets/imgs/errorlayergamebeforeModulate.gif)
 
 Isso acontece porque tentamos acessar a variável `canvas` que antes era glogal, a camada de jogo tentava
-encontrar a variável no escopo local, não encontrava batia no global e ela existia. Mas agora estamos dentro de um módulo
+encontrar a variável no escopo local, não encontrava batia no escopo global e ela existia. Mas agora estamos dentro de um módulo
 e a camada de jogo está isolada!
 
 > "A camada de jogo precisa por conta própria definir e conhecer a sua dimensão Lembra daquela tecnica que a gente
