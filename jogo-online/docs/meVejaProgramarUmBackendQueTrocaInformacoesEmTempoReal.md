@@ -152,4 +152,4 @@ ele executa o comando `npx nodemon` que recarrega o servidor caso ele sofra alte
 
 ## Introduzindo o socket.io
 
-``
+Para começar instalamos o socket.io com
