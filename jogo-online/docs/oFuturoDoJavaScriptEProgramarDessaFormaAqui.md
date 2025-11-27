@@ -337,4 +337,4 @@ export default function renderstate(contextScreen, game) {
 
 ### Navegação //-----------
 
-[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](../readme.md)
+[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
