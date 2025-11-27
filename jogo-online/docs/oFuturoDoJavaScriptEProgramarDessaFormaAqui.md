@@ -205,7 +205,11 @@ export default function createGame() {
     
     const state = {
         players : { },
-        fruits : {}
+        fruits : {},
+        canvas : {
+            width : 10,
+            height : 10
+        }
     }
 
     //add player
