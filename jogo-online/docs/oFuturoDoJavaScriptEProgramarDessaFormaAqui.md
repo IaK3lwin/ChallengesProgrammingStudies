@@ -341,4 +341,8 @@ export default function renderstate(contextScreen, game) {
 
 ### Navegação //-----------
 
+<<<<<<< HEAD
 [Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](../readme.md)
+=======
+[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
+>>>>>>> 01ba331 (finalizado parte do setup  backend)

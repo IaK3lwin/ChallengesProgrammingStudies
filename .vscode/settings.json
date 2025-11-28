@@ -4,6 +4,10 @@
         {
             "folderPath": "ChallengesProgrammingStudies/jogo-online/docs/",
             "color": "foldercolorizer.color_00cccc"
+        },
+        {
+            "folderPath": "ChallengesProgrammingStudies/jogo-online/1st-realease/public/",
+            "color": "foldercolorizer.color_9900cc"
         }
     ]
 }
