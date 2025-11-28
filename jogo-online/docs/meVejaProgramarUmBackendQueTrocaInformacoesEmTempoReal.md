@@ -1,4 +1,11 @@
+
 # Me veja programando um backend que troca informações em tempo real
+
+## **Navegação //----------------**
+
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)
+
+## Introdução
 
 Amigos, finalmente estamos perto de acabar e agora vamos para uma parte muito legal!
 Vamos **começar a desenvolver nosso backend**. Primeira coisa que iremos fazer é preparar o nosso ambiente para
@@ -36,7 +43,7 @@ const server = http.createServer(app) // 4
 
 app.use(express.static("public")) / 5
 
-app.listen(3000, () => { // 6
+server.listen(3000, () => { // 6
     console.log("Server listening with port 3000")
 })
 ```
@@ -44,8 +51,9 @@ app.listen(3000, () => { // 6
 Para facilitar o entendimento comentei números correspondente a cada instrução de código,
 nas instruções 1 e 2 estamos simplesmente dizendo que vamos usar esses carinhas para
 construir nosso código. Na linha 3 estou criando nossa instancia do express, e criamos uma
-para nosso server. Na 4 linha finalmente dizemos a nossa API que vamos servir os arquivos
-de forma estática.
+para nosso server. Na 4 linha criando a instância do servidor nativo do node e na linha 5,
+finalmente dizemos a nossa API que vamos servir os arquivos
+de forma estática; e por escutando a porta 3000 onde vamos exibir o site.
 
 ## Detalhes de implementação
 
@@ -80,7 +88,7 @@ game.movePlayer({playerId : 'player1', keyPressed : 'ArrowDown'})
 app.use(express.static("public"))
 
 
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log(game.state)
     console.log("Server listening with port 3000")
 })
@@ -213,22 +221,6 @@ server.listen(3000, () => {
 
 Agora quando entramos no jogo ele é atualizado!
 
-### Detalhe importante
-
-Prestando atenção no terminal, reparei uma mensagem de aviso do node dizendo o seguinte:
-
-```bash
-(node:76318) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/server.js is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/package.json.
-```
-
-Resumindo, node não sabe que tipo de modulo estamos usando, cometi um leve deslice em esquecer de avisar
-e configurar isso. Quando criamos um projeto node vimos que ele gera um arquivo chamado `package.json`,
-precisamos configurar o typo do projeto para module.
-
-![tpe module](assets/imgs/typeModulePackagejson.png)
-
 ### Saída
 
 ```bash
@@ -240,3 +232,33 @@ precisamos configurar o typo do projeto para module.
 Server listening with port 3000
 
 ```
+
+### Detalhe importante
+
+Prestando atenção no terminal, reparei uma mensagem de aviso do node dizendo o seguinte:
+
+```bash
+(node:76318) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/server.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/package.json.
+```
+
+Resumindo, node não sabe que tipo de módulo estamos usando, cometi um leve deslice em esquecer de avisar
+e configurar isso. Quando criamos um projeto node vimos que ele gera um arquivo chamado `package.json`,
+precisamos configurar o typo do projeto para module.
+
+![tpe module](assets/imgs/typeModulePackagejson.png)
+
+Basicamente a mesma regra do javascript vanila vale para o node, para importar um módulo seu projeto
+tem que ser do tipo módulo.
+
+## Recaptulando
+
+Organizamos nosso projeto criando uma pasta public e jogando os arquivos que serão servidor de forma estática nela, iniciamos um projeto node e configuramos ele; logo após instalamos o módulo express e criamos nosso backend expondo os arquivos estáticos. Introduzimos o socket.io ao projeto e conectamos o client com o backend atrávez dele. E criamos o evento de conexão para a primeira troca de informações entre ambos assim
+jogando o estado do jogo no backend para o frontend.
+
+No próximo e último cápitulo iremos aprofundar os conhecimentos em websocket, criar os outros sistemas do jogo e continuar a fazer a comunicação ente o client e o server em tempo real! Espero que tenha curtido mais um "post", estou pensando em migrar esses conteúdos para um futuro blog, mas ainda estou estudando sobre.
+
+## Navegação //----------------
+
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)

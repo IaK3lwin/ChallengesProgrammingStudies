@@ -1,5 +1,11 @@
 # O futuro do javascript é programar dessa forma aqui
 
+## Navegação //-----------
+
+[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
+
+## Introdução
+
 Nas páginas anteriores, já estava incomodando a quantidade de código
 em um único arquivo, que são de camadas diferentes além de que, a quantidade
 de código está dificultando a leitura.
@@ -335,6 +341,6 @@ export default function renderstate(contextScreen, game) {
 
 ## FIM
 
-### Navegação //-----------
+### Navegação //------------
 
 [Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
