@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 # Me veja programando um backend que troca informações em tempo real
 
+=======
+
+# Me veja programando um backend que troca informações em tempo real
+
+## **Navegação //----------------**
+
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)
+
+## Introdução
+
+>>>>>>> jogo-online-firstRelease
 Amigos, finalmente estamos perto de acabar e agora vamos para uma parte muito legal!
 Vamos **começar a desenvolver nosso backend**. Primeira coisa que iremos fazer é preparar o nosso ambiente para
 receber essas mudanças. Vamos verificar se nosso node está atualizado:
@@ -36,7 +48,11 @@ const server = http.createServer(app) // 4
 
 app.use(express.static("public")) / 5
 
+<<<<<<< HEAD
 app.listen(3000, () => { // 6
+=======
+server.listen(3000, () => { // 6
+>>>>>>> jogo-online-firstRelease
     console.log("Server listening with port 3000")
 })
 ```
@@ -44,6 +60,7 @@ app.listen(3000, () => { // 6
 Para facilitar o entendimento comentei números correspondente a cada instrução de código,
 nas instruções 1 e 2 estamos simplesmente dizendo que vamos usar esses carinhas para
 construir nosso código. Na linha 3 estou criando nossa instancia do express, e criamos uma
+<<<<<<< HEAD
 para nosso server. Na 4 linha finalmente dizemos a nossa API que vamos servir os arquivos
 de forma estática.
 
@@ -97,6 +114,27 @@ e configurar isso. Quando criamos um projeto node vimos que ele gera um arquivo 
 precisamos configurar o typo do projeto para module.
 
 ![tpe module](assets/imgs/typeModulePackagejson.png)
+=======
+para nosso server. Na 4 linha criando a instância do servidor nativo do node e na linha 5,
+finalmente dizemos a nossa API que vamos servir os arquivos
+de forma estática; e por escutando a porta 3000 onde vamos exibir o site.
+
+## Detalhes de implementação
+
+Estavamos evitando o acoplamento o projeto todo, mas ironicamente criamos o maior
+acoplamento do sistema inteiro! Acoplamos o client ao servidor! Atrávez do `game.js`
+e **CUIDADO**, isso pode abrir brechas perigosas para o sistema, ou você sabe o que está
+fazendo ou fará uma besteira sem tamanha. Outra coisa que vale salientar é: **A lógica e regras do jogo estão EXPOSTAS no client**, pois o arquivo que contém ela é compartilhado. Para esse jogo não tem problema
+as regras estarem públicas, entretando a depende do jogo isso pode não ser uma boa ideia.
+A exclusividade ao backend também morre nessa abordagem, a não ser que uma arquitetura realmente desacoplada.
+
+Para executar o projeto estou usando um script configurado no `package.json` que chamo de test,
+ele executa o comando `npx nodemon` que recarrega o servidor caso ele sofra alterações, o nodemon sabe qual arquivo executar por conta da configuração do `package.json`.
+
+![script run](assets/imgs/scriptrun.png)
+
+> "Quando um client quer se conectar no nosso server isso significa que ele tá querendo se conectar no jogo, correto? Então a primeira coisa que a gente precisa assumir é que já tem um jogo rodando lá no servidor. O jogo ele não inicia quando entra alguém, sempre ele tá rodando, sempre vai ter um jogador lá ou uma frutinha.O que seja, e para nós na posição de um novo jogador entrando nesse jogo. A gente precisar saber IMEDIATAMENTE como é que esse jogo está, para a gente poder continuar jogando, então a primeira coisa que a gente precisa fazer é: Assim que o jogador entrar ele vai receber em uma paulada só todo o state do backend." - Filipe Deschamps
+>>>>>>> jogo-online-firstRelease
 
 ## Pense no sistema de forma abstrata
 
@@ -115,13 +153,146 @@ game.movePlayer({playerId : 'player1', keyPressed : 'ArrowDown'})
 app.use(express.static("public"))
 
 
+<<<<<<< HEAD
 app.listen(3000, () => {
+=======
+server.listen(3000, () => {
+>>>>>>> jogo-online-firstRelease
     console.log(game.state)
     console.log("Server listening with port 3000")
 })
 
 ```
 
+<<<<<<< HEAD
+=======
+## Detalhes sobre código
+
+Adaptei o código em algumas partes pois o funcionamento do socket.io mudou, pelo que vi na documentação
+a forma de importa mudou um pouco! Agora não usamos mais uma factory e sim uma classe. Fora isso não mudou muita coisa também.
+
+## Trocando informações em tempo real com o client e o servidor
+
+![imagem client and server](https://res.cloudinary.com/dyvfesbzn/image/upload/v1761653241/Drawing_2_3_betpbq.png)
+
+Uma coisa importante que devo enfatizar aqui é não importa o fluxo de dados que
+aconteça nos **clients** as únicas informações que devem valer é a do **servidor**, até porque os dados dos clients não devem serem confiadas nunca! Pois o usuário tem acesso total aos dados do client podendo alterar o quanto quiser.
+
+## Levando o state do game para o backend
+
+Para isso única coisa necessária é importar nossa factory do game e criá-la no backend!
+O mais incrível é que estamos reaproveitando todo código feito anteriomente!
+
+### Introduzindo o socket.io
+
+Para começar instalamos o socket.io com o comando `npm i socket.io`, após sua instalação iremos importa
+ele dentro do projeto:
+
+`import { Server } from "socket.io"`
+
+Importando o `Server`, podemos criar a nova instancia do socket que será responsável pela comunicação em tempo
+real do nosso game:
+
+```js
+const socket = new Server(server, {
+  cors: { origin: "*" }
+})
+```
+
+agora podemos definir o evento de quando um socket do client conectar-se com o servidor!
+
+```js
+socket.on("connection", (socket) => {
+  console.log("connected with player:", socket.id)
+});
+```
+
+e com isso, basta adicionar a parte do client:
+
+```html
+...
+    ...
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script> <!-- baixa e executa o socket client -->
+</head>
+<body>
+    <P>content in the site</p>
+
+    <script type="module">
+        ...
+
+        const socket = io(); // creia a instancia do socker no client
+
+        ...
+
+        socket.on('connect', () => {
+            const playerId = socket.id
+            console.log("client conneted with id: ", playerId)
+
+        })
+    <script>
+</body>
+```
+
+Usando a função `on` do socket ele irá aguardar o servidor mandar para ele o evento simbolizando que ele conectou no servidor.
+
+Agora basta sincronizar o estado do jogo no momento em que ele se conectar! E para isso é muito simples, basta no momento em que a conexão for feita emitir um evento que retornará o estado atual do jogo e carregar no client:
+
+```js
+import express from "express"
+import http from "http"
+import { Server } from "socket.io"
+import createGame from "./public/game.js"
+
+const app = express()
+const server = http.createServer(app)
+const socket = new Server(server, {
+  cors: { origin: "*" }
+})
+
+const game = createGame();
+
+game.addFruit({ fruitId: 'fruit1', fruitX: 3, fruitY: 2 })
+game.addFruit({ fruitId: 'fruit2', fruitX: 2, fruitY: 7 })
+
+
+
+app.use(express.static("public"))
+
+socket.on("connection", (socket) => {
+  console.log("connected with player:", socket.id)
+  socket.emit('setup', (game.state)) // emite o sinal para o client
+});
+
+
+
+server.listen(3000, () => {
+  console.log(game.state);
+  console.log("Server listening with port 3000")
+});
+```
+
+## recebendo sinal do backend
+
+`socket.emit('setup', (game.state)) // emite o sinal para o client` envia o sinal para o client, agora no client basta dizer o que iremos fazer quando receber o sinal:
+
+```html
+...
+    ...
+<script>
+    ...
+
+    socket.on('setup', (state) => {
+        game.state = state
+    })
+
+    ...
+</script>
+
+```
+
+Agora quando entramos no jogo ele é atualizado!
+
+>>>>>>> jogo-online-firstRelease
 ### Saída
 
 ```bash
@@ -134,6 +305,7 @@ Server listening with port 3000
 
 ```
 
+<<<<<<< HEAD
 ## Detalhes de implementação
 
 Estavamos evitando o acoplamento o projeto todo, mas ironicamente criamos o maior
@@ -153,3 +325,34 @@ ele executa o comando `npx nodemon` que recarrega o servidor caso ele sofra alte
 ## Introduzindo o socket.io
 
 ``
+=======
+### Detalhe importante
+
+Prestando atenção no terminal, reparei uma mensagem de aviso do node dizendo o seguinte:
+
+```bash
+(node:76318) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/server.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspaces/ChallengesProgrammingStudies/jogo-online/1st-realease/package.json.
+```
+
+Resumindo, node não sabe que tipo de módulo estamos usando, cometi um leve deslice em esquecer de avisar
+e configurar isso. Quando criamos um projeto node vimos que ele gera um arquivo chamado `package.json`,
+precisamos configurar o typo do projeto para module.
+
+![tpe module](assets/imgs/typeModulePackagejson.png)
+
+Basicamente a mesma regra do javascript vanila vale para o node, para importar um módulo seu projeto
+tem que ser do tipo módulo.
+
+## Recaptulando
+
+Organizamos nosso projeto criando uma pasta public e jogando os arquivos que serão servidor de forma estática nela, iniciamos um projeto node e configuramos ele; logo após instalamos o módulo express e criamos nosso backend expondo os arquivos estáticos. Introduzimos o socket.io ao projeto e conectamos o client com o backend atrávez dele. E criamos o evento de conexão para a primeira troca de informações entre ambos assim
+jogando o estado do jogo no backend para o frontend.
+
+No próximo e último cápitulo iremos aprofundar os conhecimentos em websocket, criar os outros sistemas do jogo e continuar a fazer a comunicação ente o client e o server em tempo real! Espero que tenha curtido mais um "post", estou pensando em migrar esses conteúdos para um futuro blog, mas ainda estou estudando sobre.
+
+## Navegação //----------------
+
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)
+>>>>>>> jogo-online-firstRelease
