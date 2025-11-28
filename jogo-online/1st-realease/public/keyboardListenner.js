@@ -1,7 +1,8 @@
 export default function createKeydownListenner() {
 
     const state = {
-        observers : []
+        observers : [],
+        playerId : ''
     }
 
     function subscribe(observerFunc) {
@@ -21,22 +22,30 @@ export default function createKeydownListenner() {
         }
     }
 
-
+    //seta o playerId
+    function setPlayerId(playerId) {
+        state.playerId = playerId
+    }
 
     document.addEventListener('keydown', handleKeydown)
 
     function handleKeydown(event) {
         
         const command = {
-            playerId : 'player1',
+            playerId : state.playerId,
             keyPressed :  event.key
         }
 
-        notifyAll(command)
+        notifyAll({
+            type : 'move-player',
+            playerId : state.playerId,
+            keyPressed : event.key
+        })
     }
 
     return {
-        subscribe
+        subscribe,
+        setPlayerId
     }
 
 }

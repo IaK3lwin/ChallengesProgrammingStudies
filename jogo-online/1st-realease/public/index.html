@@ -28,24 +28,53 @@
         
         const socket = io();
 
-        
-
         const keyboardListener = createKeydownListenner()
-        keyboardListener.subscribe(gameClient.movePlayer)
         
-        renderstate(contextScreen, gameClient)
-
         socket.on('connect', () => {
             const playerId = socket.id
             console.log("client conneted with id: ", playerId)
+            
+            
+            keyboardListener.setPlayerId(playerId) //definir player
+            keyboardListener.subscribe(gameClient.movePlayer) //inscrever a movimentação do player
+            keyboardListener.subscribe((command) => {
+                socket.emit(command.type, command)
+            })
 
+            renderstate(contextScreen, gameClient, playerId)
         })
 
         socket.on('setup', (state) => {
             console.log("> setup in the game completed")
             console.log("stateBack : ", state, "state client: ", gameClient.state)
-            gameClient.state = state
+            gameClient.setState(state)
 
+        })
+
+        //receber sinais do servidor
+        socket.on('add-player', (command) => {
+            console.log('receivid signal with id ', command.type)
+            gameClient.addPlayer(command)
+        })
+
+        //sinal de player desconected
+        socket.on('remove-player', (command) => {
+            console.log('received signal with id: ', command.id)
+            gameClient.removePlayer(command)
+        })
+
+        //move player
+        socket.on('move-player', (command) => {
+            const playerId = socket.id
+            if (playerId != command.playerId) {
+                gameClient.movePlayer(command)
+            }
+        })
+
+        //add fruits
+
+        socket.on('add-fruit', (command) => {
+            gameClient.addFruit(command)
         })
 
         

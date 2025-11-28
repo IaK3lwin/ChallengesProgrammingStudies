@@ -9,25 +9,101 @@ export default function createGame() {
         }
     }
 
+    /**
+     * estamos iniciandos o observers fora do state, porque lembre-se que a camada de game é compartilhado entre o backend e o client. E não acho interessante export esses observers para o client quando atualizar=mos o estado do game com o server.
+     */
+    const observers = [] //lista de observer
+
+    /**
+     * 
+     * @param {*function} observerFunction 
+     * @description Subscribe observer to observer ->> subject
+     */
+    function subscribe(observerFunction) {
+        observers.push(observerFunction)
+    }
+
+    /**
+     * 
+     * @param {*object} command => {
+     *  type : {string}
+     *  
+     * }
+     * 
+     * @description notify all observers in subscribe in for subsjecct
+     */
+    function notifyAll(command) {
+        for (const functionObserver of observers) {
+            if (functionObserver) {
+                functionObserver(command)
+            }
+        }
+    }
+
+    //set state
+    function setState(newState) {
+        Object.assign(state, newState) // mescla o state argumento com state original desssa instancia
+        
+    }
+
     //add player
     function addPlayer(command) {
+        const playerX = 'playerX' in command ? command.playerX : Math.floor(Math.random() * state.canvas.width)
+        const playerY = 'playery' in command ? command.playerY : Math.floor(Math.random() * state.canvas.height)
+
+        console.log(playerX, playerY)
+
         state.players[command.playerId] = {
-            x : command.playerX,
-            y : command.playerY
+            x : playerX,
+            y : playerY
         }
+
+        //notify all observers that emit to client
+        notifyAll({
+            type : 'add-player',
+            playerId : command.playerId,
+            playerX : playerX,
+            playerY : playerX
+        })
 
     }
     // remove player
     function removePlayer(command) {
         delete state.players[command.playerId]
+
+        notifyAll({
+            type : 'remove-player',
+            playerId : command.playerId
+        })
+    }
+
+    //start ftuits
+
+    function start(frequency) {
+        if (!frequency) {
+            frequency = 2000
+        }
+
+        setInterval(addFruit, frequency)
+
     }
 
     //add fruit
     function addFruit(command) {
-        state.fruits[command.fruitId] = {
-            x : command.fruitX,
-            y : command.fruitY
+        const fruitId = command ? command.fruitId : Math.floor(Math.random() * 10000)
+        const fruitX = command ? command.fruitX : Math.floor(Math.random() * state.canvas.width)
+        const fruitY = command ? command.fruitY : Math.ceil(Math.random() * state.canvas.height)
+        
+        state.fruits[fruitId] = {
+            x : fruitX,
+            y : fruitY
         }
+
+        notifyAll({
+            type : 'add-fruit', 
+            fruitX,
+            fruitY
+        })
     }
     //remove fruit
     function removeFruit(command) {
@@ -35,6 +111,9 @@ export default function createGame() {
     }
 
     function movePlayer(command) {
+
+        notifyAll(command) // manda para o observer que fica no servidor observando a camada de game e enviar para todos clients
+
         // console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
         const player = state.players[command.playerId]
 
@@ -89,10 +168,13 @@ export default function createGame() {
     return {
         movePlayer,
         state,
+        setState,
         addPlayer,
         removePlayer,
         addFruit,
-        removeFruit
+        removeFruit,
+        subscribe,
+        start
     }
     
 }
