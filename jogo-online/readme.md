@@ -54,12 +54,12 @@ referência: [video do filipe](https://youtu.be/RJvktZnZn6A)
 
 ## [Você nunca mais vai conseguir ler um código da mesma forma...](./docs/VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md)
 
-Nesse cápitulo iremos aprender um **novo design pattern** chamado **observer** e além
+Nesse capítulo iremos aprender um **novo design pattern** chamado **observer** e além
 irá aprender um pouco sobre engenharia de sortware e conceitos como desacoplamento e acoplamento.
 
 ## [Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)](./docs/UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md)
 
-Nesse cápitulo iremos discutir sobre como reduzir a quantidades de ifs e descutir sobre engenharia de sortware
+Nesse capítulo iremos discutir sobre como reduzir a quantidades de ifs e descutir sobre engenharia de sortware
 
 ## [Duvido você programar um algoritmo mais rápido que o meu!!!](./docs/DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
 
@@ -73,3 +73,5 @@ Agora iremos modular o projeto separando os códigos.
 
 Finalmente iremos começar a programar o backend e brincar com a ideia de multiplayer, além de aprender
 um pouco sobre websockest
+
+## [Websocket na prática é MUITO poderoso!!! (Javascript + Nodejs + Socket.io)](./docs/websocketEMuitoPoderoso.md)

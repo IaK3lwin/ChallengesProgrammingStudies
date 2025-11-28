@@ -257,7 +257,7 @@ tem que ser do tipo módulo.
 Organizamos nosso projeto criando uma pasta public e jogando os arquivos que serão servidor de forma estática nela, iniciamos um projeto node e configuramos ele; logo após instalamos o módulo express e criamos nosso backend expondo os arquivos estáticos. Introduzimos o socket.io ao projeto e conectamos o client com o backend atrávez dele. E criamos o evento de conexão para a primeira troca de informações entre ambos assim
 jogando o estado do jogo no backend para o frontend.
 
-No próximo e último cápitulo iremos aprofundar os conhecimentos em websocket, criar os outros sistemas do jogo e continuar a fazer a comunicação ente o client e o server em tempo real! Espero que tenha curtido mais um "post", estou pensando em migrar esses conteúdos para um futuro blog, mas ainda estou estudando sobre.
+No próximo e último capítulo iremos aprofundar os conhecimentos em websocket, criar os outros sistemas do jogo e continuar a fazer a comunicação ente o client e o server em tempo real! Espero que tenha curtido mais um "post", estou pensando em migrar esses conteúdos para um futuro blog, mas ainda estou estudando sobre.
 
 ## Navegação //----------------
 

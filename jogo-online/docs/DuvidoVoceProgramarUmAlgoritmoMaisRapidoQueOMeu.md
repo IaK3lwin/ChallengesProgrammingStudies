@@ -4,7 +4,7 @@
 
 [Anterior](./UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md) | [Próximo](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
 
-O que verá nesse cápitulo:
+O que verá nesse capítulo:
 
 - Implementação de adição e exclusão de players e frutas de forma dinâmica;
 - Implementação do sistema de colisão;
