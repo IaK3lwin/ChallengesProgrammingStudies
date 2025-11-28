@@ -347,12 +347,4 @@ export default function renderstate(contextScreen, game) {
 
 ### Navegação //------------
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](../readme.md)
-=======
 [Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
->>>>>>> 01ba331 (finalizado parte do setup  backend)
-=======
-[Anterior](./DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md) | [Próximo](./meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
->>>>>>> jogo-online-firstRelease
