@@ -31,16 +31,15 @@ export default function createKeydownListenner() {
 
     function handleKeydown(event) {
         
+        const keyPressed = event.key
+        
         const command = {
-            playerId : state.playerId,
-            keyPressed :  event.key
-        }
-
-        notifyAll({
             type : 'move-player',
             playerId : state.playerId,
-            keyPressed : event.key
-        })
+            keyPressed :  keyPressed
+        }
+
+        notifyAll(command)
     }
 
     return {

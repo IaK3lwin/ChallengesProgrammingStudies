@@ -46,7 +46,6 @@
 
         socket.on('setup', (state) => {
             console.log("> setup in the game completed")
-            console.log("stateBack : ", state, "state client: ", gameClient.state)
             gameClient.setState(state)
 
         })
@@ -66,7 +65,8 @@
         //move player
         socket.on('move-player', (command) => {
             const playerId = socket.id
-            if (playerId != command.playerId) {
+          
+            if (playerId !== command.playerId) {
                 gameClient.movePlayer(command)
             }
         })
@@ -76,6 +76,14 @@
         socket.on('add-fruit', (command) => {
             gameClient.addFruit(command)
         })
+
+        socket.on('fruit-colleted', (command) => {
+            
+        })
+
+        socket.on('update', (state) => {
+            console.log("update ", state)
+        }, 100)
 
         
 

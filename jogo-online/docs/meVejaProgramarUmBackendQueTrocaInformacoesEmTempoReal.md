@@ -3,7 +3,7 @@
 
 ## **Navegação //----------------**
 
-[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](./websocketEMuitoPoderoso.md)
 
 ## Introdução
 
@@ -261,4 +261,4 @@ No próximo e último capítulo iremos aprofundar os conhecimentos em websocket,
 
 ## Navegação //----------------
 
-[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](../readme.md)
+[Anterior](./oFuturoDoJavaScriptEProgramarDessaFormaAqui.md) | [Próximo](./websocketEMuitoPoderoso.md)

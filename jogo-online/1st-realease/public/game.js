@@ -1,4 +1,4 @@
-export default function createGame() {
+export default function createGame(inServer) {
     
     const state = {
         players : { },
@@ -8,6 +8,8 @@ export default function createGame() {
             height : 10
         }
     }
+
+    
 
     /**
      * estamos iniciandos o observers fora do state, porque lembre-se que a camada de game é compartilhado entre o backend e o client. E não acho interessante export esses observers para o client quando atualizar=mos o estado do game com o server.
@@ -24,7 +26,6 @@ export default function createGame() {
     }
 
     /**
-     * 
      * @param {*object} command => {
      *  type : {string}
      *  
@@ -90,7 +91,7 @@ export default function createGame() {
 
     //add fruit
     function addFruit(command) {
-        const fruitId = command ? command.fruitId : Math.floor(Math.random() * 10000)
+        const fruitId = command ? command.fruitId : Math.floor(Math.random() * 1000000)
         const fruitX = command ? command.fruitX : Math.floor(Math.random() * state.canvas.width)
         const fruitY = command ? command.fruitY : Math.ceil(Math.random() * state.canvas.height)
         
@@ -102,7 +103,8 @@ export default function createGame() {
         notifyAll({
             type : 'add-fruit', 
             fruitX,
-            fruitY
+            fruitY,
+            fruitId
         })
     }
     //remove fruit
@@ -111,12 +113,10 @@ export default function createGame() {
     }
 
     function movePlayer(command) {
-
-        notifyAll(command) // manda para o observer que fica no servidor observando a camada de game e enviar para todos clients
-
         // console.log(`moving  ${command.playerId} with ${command.keyPressed}`)
         const player = state.players[command.playerId]
-
+        
+        notifyAll(command) // manda para o observer que fica no servidor observando a camada de game e enviar para todos clients
 
         const acceptMove = {
             ArrowUp(player) {
@@ -151,6 +151,7 @@ export default function createGame() {
         if (player && moveFunction) {
             moveFunction(player)
             checkCollision(player)
+            
         }
         
     }
@@ -161,6 +162,17 @@ export default function createGame() {
 
             if (fruitCurrent.x === player.x && fruitCurrent.y === player.y) {
                 removeFruit({fruitId : fruitCurrentId})
+
+                if (!inServer) {
+                    const getsound = new Audio('./src/sounds/get.wav')
+                    getsound.play()
+                }
+                notifyAll({
+                    type : 'fruit-colleted',
+                    fruitX : fruitCurrent.x,
+                    fruitY : fruitCurrent.x
+                    
+                })
             }
         }
     }
