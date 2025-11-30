@@ -39,12 +39,14 @@ não aconteceria, uma camada simples, porém importante!
   É ela a responsável por **sincronizar** todo mundo com o server
 permitindo que o jogo seja atualizado a todo momento.
 
-## [Um dos conceitos mais importantes na programação!](./docs/umDosConceitosMaisImportantesSobreProgramacao.md)
+## Capítulos
+
+### [Um dos conceitos mais importantes na programação!](./docs/umDosConceitosMaisImportantesSobreProgramacao.md)
 
   Nessa vídeo ele explica um dos paradigmas importantes para a programação o **Separation of
 concerns**
 
-## [Teste do código mal feito (Quero ver você passar!)](./docs/testeDoCodigoRuim.md)
+### [Teste do código mal feito (Quero ver você passar!)](./docs/testeDoCodigoRuim.md)
 
 Nessa parte iremos começa o desenvolvimento da camada de input de forma bem... inadequada,
 para conseguir enchergar os problemas e ir resolvendo eles! E também criaremos a primeira
@@ -52,26 +54,26 @@ regra de negócio do jogo.
 
 referência: [video do filipe](https://youtu.be/RJvktZnZn6A)
 
-## [Você nunca mais vai conseguir ler um código da mesma forma...](./docs/VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md)
+### [Você nunca mais vai conseguir ler um código da mesma forma...](./docs/VoceNuncaMaisVaiConseguirLerUmCodigoDaMesmaForma.md)
 
 Nesse capítulo iremos aprender um **novo design pattern** chamado **observer** e além
 irá aprender um pouco sobre engenharia de sortware e conceitos como desacoplamento e acoplamento.
 
-## [Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)](./docs/UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md)
+### [Um Júnior já deveria saber como reduzir a quantidade de ifs de um código (e você, sabe?)](./docs/UmJuniorJaDeveriaSaberReduzirAQuantidadeDeIfs.md)
 
 Nesse capítulo iremos discutir sobre como reduzir a quantidades de ifs e descutir sobre engenharia de sortware
 
-## [Duvido você programar um algoritmo mais rápido que o meu!!!](./docs/DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
+### [Duvido você programar um algoritmo mais rápido que o meu!!!](./docs/DuvidoVoceProgramarUmAlgoritmoMaisRapidoQueOMeu.md)
 
 Iremos implementar colissão e adição de players e frutas de forma dinâmica além de descutir sobre performace.
 
-## [O futuro do javascript é programar dessa forma aqui!](./docs/oFuturoDoJavaScriptEProgramarDessaFormaAqui.md)
+### [O futuro do javascript é programar dessa forma aqui!](./docs/oFuturoDoJavaScriptEProgramarDessaFormaAqui.md)
 
 Agora iremos modular o projeto separando os códigos.
 
-## [Me veja programando um backend que troca informações em tempo real!!](./docs/meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
+### [Me veja programando um backend que troca informações em tempo real!!](./docs/meVejaProgramarUmBackendQueTrocaInformacoesEmTempoReal.md)
 
 Finalmente iremos começar a programar o backend e brincar com a ideia de multiplayer, além de aprender
 um pouco sobre websockest
 
-## [Websocket na prática é MUITO poderoso!!! (Javascript + Nodejs + Socket.io)](./docs/websocketEMuitoPoderoso.md)
+### [Websocket na prática é MUITO poderoso!!! (Javascript + Nodejs + Socket.io)](./docs/websocketEMuitoPoderoso.md)
