@@ -6,8 +6,8 @@
 
 ## Introdução
 
-Bom, Chegamos ao ultimo capítulo dessa interessante adaptação da playlist do Filipe Deschamps! Foi muito divertido aprender conceitos e participar desssa jornada, certo?
-Bom mais para o final desse capítulo conversarei sobre o "fim".
+Bom, Chegamos ao último capítulo dessa interessante adaptação da playlist do Filipe Deschamps! Foi muito divertido aprender conceitos e participar dessa jornada, certo?
+Bom, mais para o final desse capítulo conversarei sobre o “fim”.
 
 ### O que veremos hoje?
 
@@ -17,7 +17,7 @@ Bom mais para o final desse capítulo conversarei sobre o "fim".
 
 ## Melhorando a camada de Jogo
 
-Como vimos, ao se **conectar ao backend**, o backend manda o sinal de 'setup' - sinal que criamos para enviar o estado atual do jogo - mas ele não está bom o suficiente! Vamos melhorr a camada de jogo adicionando uma função especifica para setar um estado novo:
+Como vimos, ao se **conectar ao backend**, o backend manda o sinal de 'setup' — sinal que criamos para enviar o estado atual do jogo — mas ele não está bom o suficiente! Vamos melhor a camada de jogo adicionando uma função específica para setar um estado novo:
 
 ```js
 //set state
@@ -72,7 +72,7 @@ function addPlayer(command) {
 }
 ```
 
-Caso não adicionamos as propriedades de `playerX` e `playerY` calculamos a posiçao de forma aleátora e adicionamos ao estado do jogo.
+Caso não adicionamos as propriedades de `playerX` e `playerY` calculamos a posição de forma aleatória e adicionamos ao estado do jogo.
 
 ## Adicionando o player ao jogo de forma abstrata no backend
 
@@ -85,9 +85,9 @@ socket.on("connection", (socket) => {
 })
 ```
 
-E com isso podemos adicioanar o player ao ser conectar! Mas quando desconectamos não fazemos muita nada, então eu te pergunto: Como podemos atualizar todos clients que um player foi desconectado?
+E com isso podemos adicionar o player ao ser conectar! Mas quando desconectamos não fazemos muita nada, então eu te pergunto: Como podemos atualizar todos clients que um player foi desconectado?
 
-No estado atual quando reiniciamos a página, aparece mais um jogador, mas o da sessão antiga ainda continua no estado do jogo no backend; Bom vamos adicionar a funcionalidade de remover o player ao se desconectar:
+No estado atual, quando reiniciamos a página, aparece mais um jogador, mas o da sessão antiga ainda continua no estado do jogo no backend; Bom vamos adicionar a funcionalidade de remover o player ao se desconectar:
 
 ```js
 //conected signal
@@ -102,17 +102,13 @@ socket.on("connection", (socket) => {
 })
 ```
 
-Agora quando reiniciamos a página o player antigo some e aparece o novo, mas um problema novo aparece! Quando duplicamos a aba e um novo player aparece ao voltarmos a primeira página continuamos com apenas um player! Isso acontece porque a página aberta é alimentada com o `setup` que manda o estado atual do jogo, mas a outra página tem o client "antigo", que seu `setup` não tinha o novo player adicionado, então surge uma pergunta: Como vamos izer para os outros client que entrou ou saiu um player?
+Agora quando reiniciamos a página o player antigo some e aparece o novo, mas um problema novo aparece! Quando duplicamos a aba e um novo player aparece ao voltarmos a primeira página continuamos com somente um player! Isso acontece porque a página aberta é alimentada com o `setup` que manda o estado atual do jogo, mas a outra página tem o client “antigo”, que seu `setup` não tinha o novo player adicionado, então surge uma pergunta: Como vamos dizer para os outros client que entrou ou saiu um player?
 
 ## Implementação utilizada
 
-Bom, já sabemos como emitir uma informação para os clients, mas não existe en nenhum lugar de nosso código responsável por atualizar os outros clients quando um player se conectou ao jogo.
+Bom, já sabemos como emitir uma informação para os clients, mas não existe em nenhum lugar de nosso código responsável por atualizar os outros clients quando um player se conectou ao jogo.
 
-> "Uma das formas de sincronizar todos os clients conectados, e a gente manualmente ir adicionando emits para a gente mandar essas novas informações pro client. Então por exemplo:
-    Quando um novo jogador se conecta a gente emite de forma manual para todos jogadores que isso aconteceu ou quando alguém se desconecta a gente, manualmente adiciona um novo emit para notificar todos os clientes...
-Mas isso não me parece um esforço inteligente! porque se a gente pensar um pouquinho mais o que a gente quer na verdade é: A cada coisa que acontece na camada do jogo, a gente gostaria de ser avisado, de forma passiva, por exemplo:
-
-Eu gostaria de ser avisado todo vez que um jogador for adicionado dentro do jogo, mas um detalhe importante, NÃO ME INTERESSA, dentro do sistema aonde que o método addPlayer foi utilizado, mas apartir do momento que ele for utilizado, eu gostaria de ser avisado novamente de forma passiva sem eu precisar ir atrás do código pra entender onde é que esse método foi chamado. E por que dssa minha ânsia de querer ser avisado toda hora? Porque daí meu trabalho é tão simples quanto ficar OBSERVANDO essas coisas acontecerem e quando elas acontecerem eu avisar todos os clients que estiverem OBSERVANDO. Então eu pergutno para vocês, o que vocês acham da gente utilizar o design pattern OBSORVER dentro da camada de jogo? Ou seja, transforma a camada de jogo em um SUBJECT e construir uma peçinha que vai ficar assistindo a cada emissão,a cada evento que o jogo quiser emitir e ai propagar isso para todos os clients." -- Filipe Deschamps
+> "Uma das formas de sincronizar todos os clients conectados, e a gente manualmente ir adicionando emits para a gente mandar essas novas informações pro client. Então, por exemplo: — Quando um novo jogador se conecta a gente emite de forma manual para todos jogadores que isso aconteceu ou quando alguém se desconecta a gente, manualmente adiciona um novo emit para notificar todos os clientes... — Mas isso não me parece um esforço inteligente! Porque se a gente pensar um pouquinho mais o que a gente quer, na verdade é: A cada coisa que acontece na camada do jogo, a gente gostaria de ser avisado, de forma passiva, por exemplo: eu gostaria de ser avisado todo vez que um jogador for adicionado dentro do jogo, mas um detalhe importante, NÃO ME INTERESSA, dentro do sistema aonde que o método addPlayer foi utilizado, mas apartir do momento que ele for utilizado, eu gostaria de ser avisado novamente de forma passiva sem eu precisar ir atrás do código pra entender onde é que esse método foi chamado. E por que dssa minha ânsia de querer ser avisado toda hora? Porque daí meu trabalho é tão simples quanto ficar OBSERVANDO essas coisas acontecerem e quando elas acontecerem eu avisar todos os clients que estiverem OBSERVANDO. Então eu pergutno para vocês, o que vocês acham da gente utilizar o design pattern OBSORVER dentro da camada de jogo? Ou seja, transforma a camada de jogo em um SUBJECT e construir uma peçinha que vai ficar assistindo a cada emissão,a cada evento que o jogo quiser emitir e ai propagar isso para todos os clients." -- Filipe Deschamps
 
 Citação grande, eu sei, mas Filipe explica de forma tão animada e eficaz que tive que colocar sua explicação completa. Então para essa realease inicial vamos usar o design pattern OBSORVER para observar a camada de jogo, assim quando ela emitir uma notificação iremos emitir para todos clients!
 
@@ -455,11 +451,11 @@ Outra pequena mudança foi no `client.html`, veja que quando a gente recepe o si
 
 ## Sincronizando a movimentação dos players
 
-Pode não parecer, mas já pavimentamos a estrada para isso, recapitulando a lógica, já temos a estrutura para implemetar essa sincronização! Inicialmente temos que identificar que o client movimento o player, logo em seguida enviar isso para o backend. Lá ele move o player de forma abstrata e retorna para todos os clients que um player se moveu! Simples assim. Tem ums detalhes de implementação, mas nocarei neles enquanto programamos essa parte!
+Pode não parecer, mas já pavimentamos a estrada para isso, recapitulando a lógica, já temos a estrutura para implemetar essa sincronização! Inicialmente temos que identificar que o client movimento o player, logo em seguida enviar isso para o backend. Lá ele move o player de forma abstrata e retorna para todos os clients que um player se moveu! Simples assim. Tem uns detalhes de implementação, mas tocarei neles enquanto programamos essa parte!
 
 ### Ultilizando o keyboardListenner tunado
 
-Modificamos o keyboardListenner recentemente, e básicamente vamos utilizar ele! Criaremos um observer (Lembre-se que o keyboarListenner é um subject) para observar as teclas e também seguiremos a lógica de escrever ele quando nosso client se conectar ao servidor:
+Modificamos o keyboardListenner recentemente, e basicamente vamos utilizar ele! Criaremos um observer (Lembre-se que o keyboarListenner é um subject) para observar as teclas e também seguiremos a lógica de escrever ele quando nosso client se conectar ao servidor:
 
 `index.html ///////`
 
@@ -517,9 +513,9 @@ socket.on("connection", (socket) => {
 
 ```
 
-Aqui mora um perigo! Estamos recebendo informações direto do client. Tivemos uma conversar nos útimos capítulos sobre a confiabilidade dos dados do client, nos como "dono da verdade" (backend) precisamos garantir que essas informações são validas! Ou pelo menos a maior parte. No command recebemos algumas informações: `keyPressed` -> tecla usada pelo player , `playerId`-> qual player está fazendo a ação e por fim `type` que diz o tipo da ação.
+Aqui mora um perigo! Estamos recebendo informações direto do client. Tivemos uma conversar nos últimos capítulos sobre a confiabilidade dos dados do client, nos como "dono da verdade" (backend) precisamos garantir que essas informações são validas! Ou pelo menos a maior parte. No command recebemos algumas informações: `keyPressed` -> tecla usada pelo player , `playerId`-> qual player está fazendo a ação e por fim `type` que diz o tipo da ação.
 
-Entre esses 3 valores, quais podemos confiar com 100%? Acredito que seja o `keyPressed`. Nos como backend precisamos nós virar com as entradas de usuário, mas o playerId que diz qual player será afetado pela ação e a ação em si pode ser alterado pelo client! E essas alterações podem impactar no jogo de forma perigosa! Não temos sistema de authenticação! mas por sorte sabemos qual ação queremos verificar e o id do socket que mandou o sinal. Então só precisamos sobreescrever essas informações para evitar alterações mal intencionadas!
+Entre esses 3 valores, quais podemos confiar com 100%? Acredito que seja o `keyPressed`. Nos como backend precisamos nós virarmos com as entradas de usuário, mas o playerId que diz qual player será afetado pela ação e a ação em si pode ser alterado pelo client! E essas alterações podem impactar no jogo de forma perigosa! Não temos sistema de authenticação! mas por sorte sabemos qual ação queremos verificar e o id do socket que mandou o sinal. Então só precisamos sobrescrever essas informações para evitar alterações mal intencionadas!
 
 ```js
 command.playerId = socket.id // garante que o id é realmente o correti
@@ -550,11 +546,13 @@ Por isso reatribuimos os valores do id e do type! Agora basta dizer ao client o 
 </html>
 ```
 
-Para finalizar, ao receber o sinal do backend que um player se moveu, verificamos se o player que se moveu não foi o próprio player, sim, é estranho, mas o socket notifica todo mundo! Incluindo o próprio socket que enviou. Para evitar definiar uma movimentação que já foi feita pelo client fazemos essa verificação. depois efetuamos a movimentação do game do client.
+Para finalizar, ao receber o sinal do backend que um player se moveu, verificamos se o player que se moveu não foi o próprio player, sim, é estranho, mas o socket notifica todo mundo! Incluindo o próprio socket que enviou. Para evitar a definição de uma movimentação que já foi feita pelo client fazemos essa verificação. Depois efetuamos a movimentação do game do client.
 
 ## Útimas palavras
 
-Se a útima parte ficou confusa e apressada, me desculpa. Ainda vou melhorá-la. Por hora vou descançar e comer algokkkk e o projeto não acabou aqui! Falei no ultimo capítulo que o MVP do jogo estava quase pronto, mas isso é apenas o mínimo produto viável. Quero adicionar mais mecânicas e transforma a ideia em minha! Os capítulos vão continuar com os conteúdos sendo 100% de minha autoria. Espero que fique e veja as loucuras que vamos aprontar com esse projeto.
+Se a última parte ficou confusa e apressada, me desculpa. Ainda vou melhorá-la. Por hora vou descansar e comer algokkkk e o projeto não acabou aqui! Falei no último capítulo que o MVP do jogo estava quase pronto, mas isso é somente o mínimo produto viável. Quero adicionar mais mecânicas e transforma a ideia em minha! Os capítulos vão continuar com os conteúdos sendo 100% de minha autoria. Espero que fique e veja as loucuras que vamos aprontar com esse projeto.
+
+Para meio de organizar, irei criar um fork do projeto! E as adições e melhorias serão feitos em outro momento em outro repositório. Estou ainda pensando em levar esses conteúdos para um blog tecnico, estou pensando ainda.
 
 ## FIM
 
