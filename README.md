@@ -15,7 +15,7 @@ Essa parte do repositorio foi baseado no  [vídeo](http://www.youtube.com/watch?
 nele busco responder e comentar o que foi dito no vídeo. E colocando os códigos e explicações
 apresentadas pelo felipe.
 
-### [Jogo multiplayer]("./jogo-online/readme.md")
+### [Jogo multiplayer](./jogo-online/readme.md)
 
   Novamente essa parte do repositório foi baseado no conteúdo do
 Filipe Deschamps, mas dessa vez não é apenas um vídeo e sim uma playlist nomeada de [Primeiro Jogo Multiplayer](https://www.youtube.com/playlist?list=PLMdYygf53DP5SVQQrkKCVWDS0TwYLVitL), créditos vai para o Filipe Deschamps
